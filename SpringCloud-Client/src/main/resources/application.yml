@@ -1,0 +1,22 @@
+server:
+  port: 8001
+
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8888 #服务端访问地址
+
+info:
+  name: client1
+  description: @project.description@
+  version: @project.version@
+
+management:
+  endpoint:
+    httptrace:
+      enabled: true
+  endpoints:
+    web:
+      exposure: #开放的多，服务端收集的信息才会多
+        include: auditevents,beans,caches,conditions,configprops,env,flyway,health,heapdump,httptrace,info,integrationgraph,jolokia,logfile,loggers,liquibase,metrics,mappings,prometheus,scheduledtasks,sessions,shutdown,threaddump

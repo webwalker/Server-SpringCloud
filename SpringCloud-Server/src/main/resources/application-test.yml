@@ -1,0 +1,10 @@
+server:
+      port: 8888
+
+#msg
+msg: hello world test.
+
+#hello.msg
+hello:
+     msg: Hello World test
+     msg2: test

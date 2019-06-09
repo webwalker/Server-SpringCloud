@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xujian.mapper.UsersMapper">
+	<insert id="insertUser" parameterType="com.xujian.pojo.Users">
+		insert into users(name,age) values(#{name},#{age})
+	</insert>
+	
+	<select id="selectUsersAll" resultType="com.xujian.pojo.Users">
+		select id,name,age from users
+	</select>
+	
+	<select id="selectUsersById" resultType="com.xujian.pojo.Users">
+		select id,name,age from users where id = #{value}
+	</select>
+
+	<update id="updateUser" parameterType="com.xujian.pojo.Users">
+		update users set name=#{name} ,age=#{age} where id=#{id}
+	</update>
+
+	<delete id="deleteUserById">
+		delete from users where id = #{value}
+	</delete>
+</mapper>
