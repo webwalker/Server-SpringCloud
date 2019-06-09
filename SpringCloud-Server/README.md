@@ -19,7 +19,7 @@ The following guides illustrate how to use some features concretely:
 
 通过https://start.spring.io/生成当前项目
 
-###yml
+### yml
 是Spring框架支持的解析格式  
 树状结构    
 :分隔  
@@ -30,7 +30,7 @@ The following guides illustrate how to use some features concretely:
 虽然基于log4j
 功能比log4j更强大，性能比log4j更好
 
-###打包
+### 打包
 mvn clean install，打完包在target目录下有对应的jar生成。    
 在application.properties配置中指定    spring.profiles.active=dev  
 

@@ -33,10 +33,10 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
-        <dependency> <!--用于编译jsp -->
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
-        </dependency>
+        <!--<dependency> &lt;!&ndash;用于编译jsp &ndash;&gt;-->
+            <!--<groupId>org.apache.tomcat.embed</groupId>-->
+            <!--<artifactId>tomcat-embed-jasper</artifactId>-->
+        <!--</dependency>-->
         <!--jsp end-->
         <!--freemarker视图-->
         <dependency>

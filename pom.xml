@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.xujian</groupId>
-    <artifactId>spring-cloud</artifactId>
+    <artifactId>SpringCloud-SpringBoot</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
@@ -13,6 +13,7 @@
         <module>SpringCloud-MQ</module>
         <module>SpringCloud-Client</module>
         <module>SpringCloud-SpringBoot</module>
+        <module>SpringCloud-Server</module>
     </modules>
 
 

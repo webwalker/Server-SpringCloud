@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: springcloud-mq
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: xujian
+    password: 123456
+    template:
+      exchange: log.direct
