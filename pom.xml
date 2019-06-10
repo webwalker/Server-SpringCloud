@@ -14,6 +14,10 @@
         <module>SpringCloud-Client</module>
         <module>SpringCloud-SpringBoot</module>
         <module>SpringCloud-Server</module>
+        <module>SpringCloud-Eureka-Server</module>
+        <module>SpringCloud-Eureka-Ha</module>
+        <module>SpringCloud-Eureka-Provider</module>
+        <module>SpringCloud-Eureka-Consumer</module>
     </modules>
 
 

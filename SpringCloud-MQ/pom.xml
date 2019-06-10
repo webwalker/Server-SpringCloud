@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.xujian</groupId>
-    <artifactId>SpringCloud-MQ</artifactId>
+    <artifactId>spring-cloud-mq</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SpringCloud-MQ</name>
+    <name>spring-cloud-mq</name>
     <description>Demo project for mq</description>
 
     <properties>
