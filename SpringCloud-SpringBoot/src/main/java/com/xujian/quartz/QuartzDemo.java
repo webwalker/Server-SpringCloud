@@ -2,7 +2,6 @@ package com.xujian.quartz;
 
 import java.util.Date;
 
-import com.xujian.service.QuartService;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

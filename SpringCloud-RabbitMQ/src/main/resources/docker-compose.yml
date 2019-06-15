@@ -1,0 +1,10 @@
+rabbitmq:
+  image: rabbitmq:management #镜像
+  username: xujian
+  password: 123456
+  ports:
+    - "5672:5672"
+    - "15672:15672"
+  template:
+      exchange: spring-boot-exchange
+      routing-key:

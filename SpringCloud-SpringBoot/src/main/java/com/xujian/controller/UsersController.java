@@ -88,6 +88,7 @@ public class UsersController {
         return "add";
     }
 
+    //validator, 验证提交结果
     @RequestMapping("/save")
     public String saveUser(@ModelAttribute("aa") @Valid Users users,BindingResult result){
         if(result.hasErrors()){

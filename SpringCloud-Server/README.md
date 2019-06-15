@@ -27,8 +27,7 @@ The following guides illustrate how to use some features concretely:
 缩进不可以用TAB  
 
 ### logback  
-虽然基于log4j
-功能比log4j更强大，性能比log4j更好
+虽然基于log4j，功能比log4j更强大，性能比log4j更好
 
 ### 打包
 mvn clean install，打完包在target目录下有对应的jar生成。    

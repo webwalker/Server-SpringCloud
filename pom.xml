@@ -10,7 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>SpringCloud-Server</module>
-        <module>SpringCloud-MQ</module>
         <module>SpringCloud-Client</module>
         <module>SpringCloud-SpringBoot</module>
         <module>SpringCloud-Server</module>
@@ -18,6 +17,8 @@
         <module>SpringCloud-Eureka-Ha</module>
         <module>SpringCloud-Eureka-Provider</module>
         <module>SpringCloud-Eureka-Consumer</module>
+        <module>SpringCloud-RabbitMQ</module>
+        <module>SpringCloud-Redis</module>
     </modules>
 
 

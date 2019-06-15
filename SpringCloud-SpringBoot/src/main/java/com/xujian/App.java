@@ -3,10 +3,11 @@ package com.xujian;
 import com.xujian.filter.SecondFilter;
 import com.xujian.listener.SecondListener;
 import com.xujian.servlet.SecondServlet;
+import com.xujian.upload.StorageProperties;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
@@ -19,6 +20,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 //@EnableAutoConfiguration
 @MapperScan("com.xujian.mapper") //@MapperScan 用户扫描MyBatis的Mapper接口
 @EnableScheduling //SpringBoot默认的Scheduled定时任务、Quartz都使用
+@EnableConfigurationProperties(StorageProperties.class)
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
