@@ -17,8 +17,10 @@
         <module>SpringCloud-Eureka-Ha</module>
         <module>SpringCloud-Eureka-Provider</module>
         <module>SpringCloud-Eureka-Consumer</module>
-        <module>SpringCloud-RabbitMQ</module>
+        <module>SpringCloud-RabbitMQ-Receiver</module>
         <module>SpringCloud-Redis</module>
+        <module>SpringCloud-RabbitMQ-Sender</module>
+        <module>SpringCloud-Utility</module>
     </modules>
 
 

@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: springcloud-mq
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: xujian
+    password: 123456
+    template:
+      exchange: sender.topic #log.direct
+      routing-key: sender1.#
+      #reply-timeout:
+      #receive-timeout:
+    listener:
+      simple:
+        acknowledge-mode: manual #采用手动应答, 默认为自动应答
+        concurrency: 1  #指定最小的消费者数量
+        max-concurrency: 10 #指定最大的消费者数量
+        retry:
+          enabled: true #是否支持重试
+          max-attempts: 3 #默认3次
+        prefetch: 5 #全局配置, 告诉RabbitMQ不要同时给一个消费者推送多于N个消息，即一旦有N个消息还没有ack，则该consumer将block掉，直到有消息ack
+        default-requeue-rejected: true #默认是true, ack打开后异常时消息会重复发送, 需要处理好异常
+        #transaction-size:

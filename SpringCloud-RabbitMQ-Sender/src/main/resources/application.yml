@@ -1,0 +1,18 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: springcloud-mq
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: xujian
+    password: 123456
+    template:
+      exchange: sender.topic
+      mandatory: true #消息发送失败时返回给发送者(如为false会直接丢弃)
+      retry:
+        enabled: false #生产端重试, 默认为false
+    publisher-confirms: true #消息发送到交换机确认机制, 是否确认回调
+    publisher-returns: true #消息发送到交换机确认机制, 是否返回回调
