@@ -18,7 +18,7 @@ public class Hero {
     @JsonAlias({"fName", "f_name"})
     private String set;
 
-    public static void main(String[] args) throws Exception {
+    public static void main() {
         String json = JsonUtil.toJson(new Hero("Jason", new Date()));
         System.out.println(json);
         Hero hero = JsonUtil.fromJson(json, Hero.class);

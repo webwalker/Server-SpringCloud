@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Configuration
 public class GlobalException3 implements HandlerExceptionResolver {
+    @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
                                          Exception ex) {
         ModelAndView mv = new ModelAndView();

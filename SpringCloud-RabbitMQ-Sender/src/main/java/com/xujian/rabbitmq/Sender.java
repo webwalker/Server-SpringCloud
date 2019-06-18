@@ -35,7 +35,9 @@ public class Sender {
                 .andProperties(messageProperties)
                 //.setDeliveryMode(MessageDeliveryMode.PERSISTENT) //默认已经是
                 .setContentType("application/json")
-                .setCorrelationId(msgId).build();
+                .setCorrelationId(msgId)
+                .setMessageId(msgId) //方便消息去重
+                .build();
         rabbitTemplate.convertAndSend(RabbitMQConfig.topicExchangeName, sender1key, message, correlationData);
     }
 

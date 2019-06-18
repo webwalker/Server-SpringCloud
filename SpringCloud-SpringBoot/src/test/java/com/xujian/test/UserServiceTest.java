@@ -1,6 +1,6 @@
 package com.xujian.test;
 
-import com.xujian.App;
+import com.xujian.SpringCloudBootApplication;
 import com.xujian.service.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * junit 与 spring 整合 @Contextconfiguartion("classpath:applicationContext.xml")
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {App.class})
+@SpringBootTest(classes = {SpringCloudBootApplication.class})
 public class UserServiceTest {
     @Autowired
     private UserServiceImpl userServiceImpl;

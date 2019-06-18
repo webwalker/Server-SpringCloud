@@ -33,7 +33,7 @@ public class CustomWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .usernameParameter("username")
                     .passwordParameter("password")
-                    .failureForwardUrl("/login?error")
+                    .failureForwardUrl("/login?exception")
                     .loginPage("/login")
                     .permitAll()
                     .and()

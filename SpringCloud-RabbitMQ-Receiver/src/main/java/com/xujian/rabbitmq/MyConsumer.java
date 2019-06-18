@@ -19,15 +19,22 @@ public class MyConsumer extends DefaultConsumer {
     @Override
     public void handleDelivery(String consumerTag, Envelope envelope,
                                AMQP.BasicProperties properties, byte[] body) throws IOException {
-        System.err.println("-----------consume message----------");
-        System.err.println("consumerTag: " + consumerTag);
-        System.err.println("envelope: " + envelope);
-        //System.err.println("properties: " + properties);
+        //防止异常后channel关闭
+        try {
+            System.err.println("-----------consume message----------");
+            System.err.println("consumerTag: " + consumerTag);
+            System.err.println("envelope: " + envelope);
+            //System.err.println("properties: " + properties);
 
-        String msg = new String(body, "utf-8");
-        System.err.println("body: " + msg);
-
-        //手工ACK，参数multiple表示不对之前的消息进行批量签收
-        channel.basicAck(envelope.getDeliveryTag(), false);
+            String msg = new String(body, "utf-8");
+            System.err.println("body: " + msg);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            //手工ACK，参数multiple表示不对之前的消息进行批量签收
+            channel.basicAck(envelope.getDeliveryTag(), false);
+        }
     }
 }

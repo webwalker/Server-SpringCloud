@@ -29,7 +29,7 @@ public class AckConsumer implements ChannelAwareMessageListener {
             User userDto = null; //userService.save(user);
             String returnCode = ""; //userDto.getReturnCode();
             logger.info("调用结果返回：{}", JsonUtil.toJson(userDto));
-            if (returnCode.equals("1000")) {
+            if ("1000".equals(returnCode)) {
                 state = "10A";
                 channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
             } else {

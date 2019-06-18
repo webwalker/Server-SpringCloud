@@ -1,6 +1,6 @@
 package com.xujian.test;
 
-import com.xujian.App;
+import com.xujian.SpringCloudBootApplication;
 import com.xujian.pojo.Users;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Spring Data Redis测试
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = App.class)
+@SpringBootTest(classes = SpringCloudBootApplication.class)
 public class RedisTest {
 
     @Autowired

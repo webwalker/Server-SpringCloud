@@ -6,6 +6,7 @@
 各个Eureka服务器之间进行通讯，统一对外提供注册中心服务
 
 1、mvn clean install 打包  
+mvn package  
 
 2、命令    
 

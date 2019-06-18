@@ -3,6 +3,7 @@ package com.xujian.rabbitmq;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.listener.api.RabbitListenerErrorHandler;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +28,13 @@ public class RabbitMQConfig {
     public static final String sender3RouteKey = "sender3.#";
     public static final String sender3QueueName = "sender3.queue";
 
+    //exception queue
+    public static final String errorQueueName = "error.queue";
+    public static final String errorExchangeName = "error.topic";
+    public static final String errorRouteKey = "error.#";
+
+    public static final String exceptionQueueName = "exception.queue";
+
     //可定义失败的交换机和队列单独处理异常
     //可将重试的消息发送到重试队列中，单独处理，隔离开
 
@@ -46,6 +54,8 @@ public class RabbitMQConfig {
     @Bean
     @Qualifier(value = "queue2")
     Queue queue2() {
+        //Map<String,Object> arguments = new HashMap<>();
+        //return new Queue(sender2QueueName, true, false, false, arguments);
         return new Queue(sender2QueueName);
     }
 
@@ -53,6 +63,12 @@ public class RabbitMQConfig {
     @Qualifier(value = "queue3")
     Queue queue3() {
         return new Queue(sender3QueueName);
+    }
+
+    @Bean
+    @Qualifier(value = "errorQueue")
+    Queue errorQueue() {
+        return new Queue(exceptionQueueName);
     }
 
     @Bean
@@ -101,6 +117,8 @@ public class RabbitMQConfig {
 //    @Bean
 //    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory){
 //        RabbitAdmin rabbitAdmin = new RabbitAdmin(connectionFactory);
+//        //设置忽略声明异常, 避免一些异常抛出，关闭channel
+//        rabbitAdmin.setIgnoreDeclarationExceptions(true);
 //        return rabbitAdmin;
 //    }
 
@@ -121,13 +139,20 @@ public class RabbitMQConfig {
 //        container.setQueueNames(RabbitMQConfig.sender1QueueName);
 //        //ExecutorService executorService = Executors.newFixedThreadPool(300);  //300个线程的线程池
 //        //container.setTaskExecutor(executorService);
-//        //在配置中已配置
-//        //container.setConcurrentConsumers(10);
 //
+//        //container.setConcurrentConsumers(1);
+//        //container.setMaxConcurrentConsumers(10);
 //        //container.setAcknowledgeMode(AcknowledgeMode.MANUAL);
-//        //container.setDefaultRequeueRejected(false);
+//        //设置当rabbitmq收到nack/reject确认信息时的处理方式，设为true，扔回queue头部，死循环，设为false，丢弃。
+//        container.setDefaultRequeueRejected(true);
+//        //是否设置Channel的事务。
+//        container.setChannelTransacted(false);
+//        //setTxSize：设置事务当中可以处理的消息数量。
+//        container.setTxSize(1);
 //        //严格按照顺序执行
 //        //container.setExclusive(false);
+//        //setErrorHandler：实现ErrorHandler接口设置进去，所有未catch的异常都会由ErrorHandler处理。
+//        //container.setErrorHandler();
 //        container.setMessageListener(listenerAdapter);
 //        /*container.setMessageListener(new ChannelAwareMessageListener() {
 //            @Override
@@ -164,4 +189,12 @@ public class RabbitMQConfig {
 //        return factory;
 //    }
     //自定义接收--->end
+
+    @Bean
+    public RabbitListenerErrorHandler rabbitListenerErrorHandler() {
+        return (amqpMessage, message, exception) -> {
+            System.out.println("-------------------------------------" + message);
+            throw exception;
+        };
+    }
 }

@@ -46,7 +46,9 @@ public class JsonUtil {
      * javaBean,list,array convert to json string
      */
     public static String toJson(Object obj) {
-        if (obj == null) return "";
+        if (obj == null) {
+            return "";
+        }
         try {
             return om.writeValueAsString(obj);
         } catch (Exception e) {
@@ -57,7 +59,9 @@ public class JsonUtil {
 
     //输出漂亮的JSON串
     public static String toPrettyJson(Object obj) {
-        if (obj == null) return "";
+        if (obj == null) {
+            return "";
+        }
         try {
             return om.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
         } catch (Exception e) {
@@ -70,7 +74,9 @@ public class JsonUtil {
      * json string convert to javaBean
      */
     public static <T> T fromJson(String json, Class<T> clazz) {
-        if (json == null || json.isEmpty()) return null;
+        if (json == null || json.isEmpty()) {
+            return null;
+        }
         try {
             return om.readValue(json, clazz);
             //JavaType javaType = TypeFactory.defaultInstance().constructType(clazz);
@@ -82,7 +88,9 @@ public class JsonUtil {
     }
 
     public static <T> T fromJson(String json, TypeReference<T> typeReference) {
-        if (json == null || json.isEmpty()) return null;
+        if (json == null || json.isEmpty()) {
+            return null;
+        }
         try {
             return (T) om.readValue(json, typeReference);
         } catch (Exception e) {
@@ -96,7 +104,9 @@ public class JsonUtil {
      */
     public static <T> Map<String, Object> toMap(String json)
             throws Exception {
-        if (json == null || json.isEmpty()) return null;
+        if (json == null || json.isEmpty()) {
+            return null;
+        }
         return om.readValue(json, Map.class);
     }
 
@@ -136,7 +146,9 @@ public class JsonUtil {
      * map convert to javaBean
      */
     public static <T> T fromJson(Map map, Class<T> clazz) {
-        if (map == null) return null;
+        if (map == null) {
+            return null;
+        }
         return om.convertValue(map, clazz);
     }
 

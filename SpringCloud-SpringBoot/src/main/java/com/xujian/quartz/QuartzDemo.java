@@ -17,6 +17,7 @@ public class QuartzDemo implements Job {
     /**
      * 任务被触发时所执行的方法
      */
+    @Override
     public void execute(JobExecutionContext arg0) throws JobExecutionException {
         System.out.println("Execute...." + new Date());
         this.service.addUsers();

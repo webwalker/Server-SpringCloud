@@ -23,13 +23,17 @@ public class Receiver {
         //latch.countDown();
     }
 
-    @RabbitListener(queues = sender1QueueName)
+    //异步线程处理
+    @RabbitListener(queues = sender1QueueName, errorHandler = "rabbitListenerErrorHandler")
     public void process1(Message message, Channel channel) throws IOException {
         //消息消费有些问题, 总有1条是unack的, 而且发送端setConfirmCallback都是ack失败的
 //        //进行参数设置：单条消息的大小限制，一次最多能处理多少条消息，是否将上面设置应用于channel
 //        channel.basicQos(0, 1, false);
 //        //限流：autoAck设置为false, 自动应答处理
 //        channel.basicConsume(sender1QueueName, false, new MyConsumer(channel));
+
+        //通过messageid去重
+        //message.getMessageProperties().getMessageId();
 
         // 采用手动应答模式, 手动确认应答更为安全稳定
         //multiple 是否要将这个消息以及它之前的消息都确认

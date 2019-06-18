@@ -25,13 +25,20 @@ public class RabbitMQConfig {
     private Logger logger = LoggerFactory.getLogger(RabbitMQConfig.class);
 
 //    @Bean
-//    public ConnectionFactory connectionFactory(){
+//    public ConnectionFactory connectionFactory() {
 //        CachingConnectionFactory factory = new CachingConnectionFactory();
-//        factory.setUri("amqp://xxx.yyyy:123456@192.168.1.131:5672");
+//        //factory.setUri("amqp://xxx.yyyy:123456@192.168.1.131:5672");
 //        //factory.setPublisherConfirms(true);
+//        /*factory.setCloseExceptionLogger(new ConditionalExceptionLogger() {
+//            @Override
+//            public void log(Log logger, String message, Throwable t) {
+//                logger.exception("发送异常：" + message, t);
+//            }
+//        });*/
 //        return factory;
 //    }
 //
+//    //RabbitAdmin封装了对 RabbitMQ 的管理操作
 //    @Bean
 //    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory){
 //        RabbitAdmin rabbitAdmin = new RabbitAdmin(connectionFactory);
