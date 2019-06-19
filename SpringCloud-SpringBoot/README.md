@@ -27,7 +27,7 @@ SpringBoot 要求模板形式的视图层文件必须放到 src/main/resources �
 
 热部署：
 SpringLoader:SpringLoader 在部署项目时使用的是热部署的方式。 
-DevTools: 更简洁，在部署项目时使用的是重新部署的方式。
+DevTools: spring-boot-devtools，更简洁，在部署项目时使用的是重新部署的方式。
 
 缓存：
 Spring Data Redis 是属于 Spring Data 下的一个模块。作用就是简化对于 redis 的操做

@@ -1,0 +1,56 @@
+server:
+  port: 8888
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 12345678
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/xujian?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    druid:
+      initialSize: 5 #5
+      #最小连接池数量, sleep保留
+      minIdle: 5
+      #最大连接池数量= ((核心数 * 2) + 有效磁盘数)
+      maxActive: 20 #10
+      #官方不建议配置
+#      maxWait: 60000
+      #连接的间隔时间，如果连接空闲时间大于等于minEvictableIdleTimeMillis则关闭物理连接
+      timeBetweenEvictionRunsMillis: 60000
+      #连接保持空闲而不被驱逐的最小时间
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 'x' #SELECT 1 FROM DUAL
+      #validationQuery的超时时间
+      validationQueryTimeout: 5
+      #不影响性能, 并且保证安全性, 空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效
+      testWhileIdle: true
+      #会降低性能
+      testOnBorrow: false
+      #会降低性能
+      testOnReturn: false
+      #对支持游标的数据库性能提升巨大, 比如说oracle，MYSQL需要关闭
+      poolPreparedStatements: false
+#      max-open-prepared-statements: 20
+      #大于0时，poolPreparedStatements自动触发修改为true
+      #在Druid中，不会存在Oracle下PSCache占用内存过多的问题，可以把这个数值配置大一些，比如说100
+      maxPoolPreparedStatementPerConnectionSize: 0 #80
+      filters: stat,wall,slf4j
+      #多个数据源，监控的时候可以通过名字来区分开来
+      name: db.mysql1
+      #查询超时
+      query-timeout: 30
+  #      remove-abandoned: true
+#      remove-abandoned-timeout:
+#      remove-abandoned-timeout-millis:
+  #      connectionProperties:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    #控制台打印sql
+    show-sql: true
+  devtools:
+    restart:
+      enabled: true
+#      additional-exclude:
+#      additional-paths:
+#      ...

@@ -9,7 +9,8 @@ public class SpringCloudThinkingApplication {
     private static ExecutorService executorService;
 
     public static void main(String[] args) throws Exception {
-        System.out.println("111111");
+        //new PatternTest();
+        new ThreadTest().go();
     }
 
 }

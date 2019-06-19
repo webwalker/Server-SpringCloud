@@ -1,12 +1,10 @@
 package com.xujian.pojo;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TestEnv {
 
-    @Value("${com.name}")
     private String name;
 
     private String age;

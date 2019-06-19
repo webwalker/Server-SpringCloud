@@ -31,6 +31,7 @@
         <module>SpringCloud-Utility</module>
         <module>SpringCloud-RabbitMQ-Exception</module>
         <module>SpringCloud-Thinking</module>
+        <module>SpringCloud-Database</module>
     </modules>
 
     <properties>

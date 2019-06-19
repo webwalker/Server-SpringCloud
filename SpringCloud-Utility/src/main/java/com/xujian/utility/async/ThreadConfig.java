@@ -29,7 +29,7 @@ public class ThreadConfig implements AsyncConfigurer {
     public Executor getAsyncExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(CORE_POOL_SIZE); //5
-        executor.setMaxPoolSize(MAXIMUM_POOL_SIZE); //15
+        executor.setMaxPoolSize(MAXIMUM_POOL_SIZE); //最佳线程数就刚好是CPU核心数的一倍
         executor.setQueueCapacity(20); //线程池队列容量
         //等待任务在关机时完成--表明等待所有线程执行完
         //executor.setWaitForTasksToCompleteOnShutdown(true);

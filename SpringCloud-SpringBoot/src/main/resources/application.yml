@@ -1,0 +1,46 @@
+mybatis:
+#    config-location: classpath:mybatis-config.xml
+    mapper-locations: classpath*:mapper/*.xml
+    type-aliases-package: com.xujian.mapper
+spring:
+    profiles: #定义环境
+        active: test
+    datasource: #持久层
+#        dbcp2:
+#            initialSize: 25
+#            max-conn-lifetime-millis: 100
+#            max-wait-millis: 60000
+#            minEvictableIdleTimeMillis: 300000
+#            minIdle: 5
+#            testOnBorrow: false
+#            testOnReturn: false
+#            testWhileIdle: true
+#            timeBetweenEvictionRunsMillis: 60000
+#            validationQuery: SELECT 1 FROM DUAL
+        driverClassName: com.mysql.cj.jdbc.Driver
+        password: 12345678
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3306/xujian?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+        username: root
+#    devtools:
+#        restart:
+#            enabled: true
+    mvc:
+        view: #jsp
+            prefix: /WEB-INF/jsp/
+            suffix: .jsp
+    redis:
+        host: 127.0.0.1
+        jedis:
+            pool:
+                max-active: 20
+                max-idle: 10
+                min-idle: 5
+        port: 6379
+    servlet:
+        multipart: #upload
+            max-file-size: 200MB
+            max-request-size: 200MB
+#    thymeleaf:
+#        cache: false
+#        prefix: classpath:/templates

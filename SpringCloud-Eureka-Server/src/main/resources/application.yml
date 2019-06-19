@@ -1,0 +1,16 @@
+eureka:
+    client:
+        #是否从 Eureka-Server 获取服务注册信息，默认为 true
+        fetchRegistry: false
+        #是否将自己注册到 Eureka-Server 中，默认的为 true
+        registerWithEureka: false
+server:
+    port: 8761
+spring:
+    application:
+        name: eureka-server
+    #开启http basic 的安全认证
+    security:
+        user:
+            name: xujian
+            password: 123456

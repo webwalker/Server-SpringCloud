@@ -1,0 +1,56 @@
+java:
+  rabbitmq:
+    consumer:
+      #配置supply监听信息
+      service:
+        fail:
+          exchange: scm3.materials.fail
+        retry:
+          exchange: scm3.materials.retry
+        supply:
+          retry:
+            routingkey: material@supply
+        user: #配置user监听信息
+          retry:
+            routingkey: material@user
+    send:
+      #配置生产者的配置，包括exchange,routingkey等
+      service:
+        exchange: scm3.materials
+        rountkey: direct_rounting_key
+server:
+  port: 6006
+spring:
+  application:
+    name: springboot_rabbitmq
+  rabbitmq:
+    host: localhost
+    listener:
+      simple:
+        #消费端采用手动应答
+        acknowledge-mode: manual
+        #开启rabbitmq的消费者{listener}重试机制,该重试机制需要设置为自动ack,本次方案和PHP保持一致，如果消费者消费失败后，手动将消息放入死信队列等待消息被重新消费
+        # 默认该配置为false,设置为true的意思是，如果消费者消费失败了，rabbitmq server会自动重试3次
+#        retry:
+#          enabled: true
+    password: 123456
+    port: 5672
+    #开启rabbitmq的confirm机制,如果消息没有到达exchange,或者exchange在ack生产者的时候，生产者没有收到,那么生产者会进行重发
+    #如果设置为false,经过测试，不会进行回调
+    publisher-confirms: true
+    template:
+      #关闭消息的强制路由，当生产者将消息发到exchange，如果没有queue进行绑定, 禁止broker发送basic.return，表示当前消息无人消费
+      #因为我们配置了消息的持久性，就算没有消费者，消息也在磁盘，默认就是false
+      mandatory: false
+      #开启rabbitmq的生产端{template}重试机制,默认是false,默认重试3次
+      retry:
+        enabled: true
+    username: xujian
+#    cache:
+#       channel: #设置默认通道缓存的大小
+#         size: 10
+#      connection:
+#        #默认缓存模式是channel,在springboot里面,比如在框架rabbitmqTemplate中使用的通道将会可靠地返回到缓存中
+#        mode: channel
+    virtual-host: /
+#    addresses:  #单机，集群多个地址以,号隔开
