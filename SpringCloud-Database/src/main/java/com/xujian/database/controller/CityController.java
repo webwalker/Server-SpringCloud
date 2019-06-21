@@ -1,7 +1,7 @@
 package com.xujian.database.controller;
 
 import com.xujian.database.entity.City;
-import com.xujian.database.mapper.CityRepository;
+import com.xujian.database.jpa.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +14,8 @@ import java.util.Optional;
  */
 @RestController
 public class CityController {
-
-
     @Autowired
     private CityRepository cityRepository;
-
 
     //http://localhost:8888/saveCity?cityName=北京&cityIntroduce=中国首都
     @GetMapping(value = "saveCity")

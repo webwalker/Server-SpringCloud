@@ -1,6 +1,7 @@
 package com.xujian.rabbitmq;
 
 import com.rabbitmq.client.Channel;
+import com.xujian.rabbitmq.consumer.BaseConsumer;
 import com.xujian.rabbitmq.pojo.User;
 import com.xujian.utility.util.JsonUtil;
 import org.slf4j.Logger;
@@ -8,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
 
-public class AckConsumer implements ChannelAwareMessageListener {
+public class AckConsumer implements ChannelAwareMessageListener, BaseConsumer {
     private Logger logger = LoggerFactory.getLogger(AckConsumer.class);
 
 //    @Autowired

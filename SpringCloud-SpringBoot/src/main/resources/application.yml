@@ -1,7 +1,3 @@
-mybatis:
-#    config-location: classpath:mybatis-config.xml
-    mapper-locations: classpath*:mapper/*.xml
-    type-aliases-package: com.xujian.mapper
 spring:
     profiles: #定义环境
         active: test
@@ -29,14 +25,6 @@ spring:
         view: #jsp
             prefix: /WEB-INF/jsp/
             suffix: .jsp
-    redis:
-        host: 127.0.0.1
-        jedis:
-            pool:
-                max-active: 20
-                max-idle: 10
-                min-idle: 5
-        port: 6379
     servlet:
         multipart: #upload
             max-file-size: 200MB

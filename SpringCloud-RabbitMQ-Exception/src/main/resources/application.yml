@@ -18,8 +18,6 @@ java:
       service:
         exchange: scm3.materials
         rountkey: direct_rounting_key
-server:
-  port: 6006
 spring:
   application:
     name: springboot_rabbitmq

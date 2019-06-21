@@ -20,7 +20,6 @@
         <module>SpringCloud-Server</module>
         <module>SpringCloud-Client</module>
         <module>SpringCloud-SpringBoot</module>
-        <module>SpringCloud-Server</module>
         <module>SpringCloud-Eureka-Server</module>
         <module>SpringCloud-Eureka-Ha</module>
         <module>SpringCloud-Eureka-Provider</module>
@@ -32,6 +31,8 @@
         <module>SpringCloud-RabbitMQ-Exception</module>
         <module>SpringCloud-Thinking</module>
         <module>SpringCloud-Database</module>
+        <module>SpringCloud-RocketMQ</module>
+        <module>SpringCloud-Socket</module>
     </modules>
 
     <properties>
@@ -61,6 +62,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.jenkins-ci.plugins</groupId>-->
+<!--                <artifactId>plugin</artifactId>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 </project>

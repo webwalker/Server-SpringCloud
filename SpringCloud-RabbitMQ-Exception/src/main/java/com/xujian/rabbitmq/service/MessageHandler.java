@@ -4,5 +4,5 @@ import org.springframework.amqp.core.Message;
 
 public interface MessageHandler {
 
-  void HandlerMessage(Message message, String type);
+    void HandlerMessage(Message message, String type);
 }

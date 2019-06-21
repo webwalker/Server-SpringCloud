@@ -4,10 +4,11 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
+import com.xujian.rabbitmq.consumer.BaseConsumer;
 
 import java.io.IOException;
 
-public class MyConsumer extends DefaultConsumer {
+public class MyConsumer extends DefaultConsumer implements BaseConsumer {
     //接收channel
     private Channel channel;
 

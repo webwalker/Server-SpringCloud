@@ -1,5 +1,6 @@
 package com.xujian.rabbitmq;
 
+import com.xujian.rabbitmq.consumer.BaseConsumer;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ import static com.xujian.rabbitmq.RabbitMQConfig.*;
                 key = errorRouteKey
         )
 )
-public class ErrorReceiver {
+public class ErrorReceiver implements BaseConsumer {
     //接收消息
     @RabbitHandler
     public void process(String msg) {

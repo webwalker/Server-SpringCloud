@@ -36,8 +36,8 @@ public class MessageSender {
 
     /**
      * confirm机制,当生产者发送消息给exchange的时候,如果没有发到到exchange,会收不到ack,
-     * 如果送达到了exchange,会回调该方法,如果消息，队列，交换机都设置了持久化，那么消息 在持久化到磁盘后，才会ack给生产者,也就是说生产者收到了ack后，消息肯定是可靠的了，已经
-     * 到磁盘了
+     * 如果送达到了exchange,会回调该方法,如果消息，队列，交换机都设置了持久化，那么消息 在持久化到磁盘后，才会ack给生产者,
+     * 也就是说生产者收到了ack后，消息肯定是可靠的了，已经到磁盘了
      */
     @PostConstruct
     public void init() {

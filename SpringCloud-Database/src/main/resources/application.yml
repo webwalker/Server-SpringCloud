@@ -1,5 +1,3 @@
-server:
-  port: 8888
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -14,7 +12,7 @@ spring:
       #最大连接池数量= ((核心数 * 2) + 有效磁盘数)
       maxActive: 20 #10
       #官方不建议配置
-#      maxWait: 60000
+      #      maxWait: 60000
       #连接的间隔时间，如果连接空闲时间大于等于minEvictableIdleTimeMillis则关闭物理连接
       timeBetweenEvictionRunsMillis: 60000
       #连接保持空闲而不被驱逐的最小时间
@@ -30,7 +28,7 @@ spring:
       testOnReturn: false
       #对支持游标的数据库性能提升巨大, 比如说oracle，MYSQL需要关闭
       poolPreparedStatements: false
-#      max-open-prepared-statements: 20
+      #      max-open-prepared-statements: 20
       #大于0时，poolPreparedStatements自动触发修改为true
       #在Druid中，不会存在Oracle下PSCache占用内存过多的问题，可以把这个数值配置大一些，比如说100
       maxPoolPreparedStatementPerConnectionSize: 0 #80
@@ -40,8 +38,8 @@ spring:
       #查询超时
       query-timeout: 30
   #      remove-abandoned: true
-#      remove-abandoned-timeout:
-#      remove-abandoned-timeout-millis:
+  #      remove-abandoned-timeout:
+  #      remove-abandoned-timeout-millis:
   #      connectionProperties:
   jpa:
     hibernate:
@@ -54,3 +52,11 @@ spring:
 #      additional-exclude:
 #      additional-paths:
 #      ...
+mybatis:
+  #    config-location: classpath:mybatis-config.xml
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.xujian.database.mapper
+mvc:
+  view: #jsp
+    prefix: /WEB-INF/jsp/
+    suffix: .jsp

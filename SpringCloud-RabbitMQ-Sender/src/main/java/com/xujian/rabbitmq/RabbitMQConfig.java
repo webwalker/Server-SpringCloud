@@ -1,9 +1,8 @@
 package com.xujian.rabbitmq;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.xujian.rabbitmq.callback.RabbitConfirmCallback;
+import com.xujian.rabbitmq.callback.RabbitReturnCallback;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,8 +20,6 @@ public class RabbitMQConfig {
 
     public static final String directExchangeName = "sender.direct";
     public static final String sender3key = "sender3.hahaha";
-
-    private Logger logger = LoggerFactory.getLogger(RabbitMQConfig.class);
 
 //    @Bean
 //    public ConnectionFactory connectionFactory() {
@@ -58,33 +55,10 @@ public class RabbitMQConfig {
         //消息发送失败时返回给发送者(如为false会直接丢弃), yml需要配置 publisher-returns: true
         rabbitTemplate.setMandatory(true);
         //消息返回, yml需要配置 publisher-returns: true
-        rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey) -> {
-            String correlationId = message.getMessageProperties().getCorrelationId();
-            System.out.println(String.format("消息：{%s} 发送失败, 应答码：{%s} 原因：{%s} 交换机: {%s}  路由键: {%s}", correlationId, replyCode, replyText, exchange, routingKey));
-        });
+        rabbitTemplate.setReturnCallback(new RabbitReturnCallback());
         //消息确认, yml需要配置 publisher-confirms: true
-        rabbitTemplate.setConfirmCallback((correlationData, ack, cause) -> {
-            if (ack) {
-                System.out.println("ack-消息发送到exchange成功.");
-            } else {
-                System.out.println("nack-发送到exchange失败,需手工处理该消息，原因: " + cause);
-            }
-            //resend(rabbitTemplate, correlationData, cause);
-        });
+        rabbitTemplate.setConfirmCallback(new RabbitConfirmCallback());
 
         return rabbitTemplate;
-    }
-
-    //从记录的map中尝试重新发送
-    private void resend(RabbitTemplate rabbitTemplate, CorrelationData correlationData, boolean ack, String cause) {
-//        if (null != cause && !"".equals(cause)) {
-//            System.out.println("失败原因:" + cause);
-//            // 重发的时候到redis里面取,消费成功了，删除redis里面的msgId
-//            Message message = messageMap.get(correlationData.getId());
-//            rabbitTemplate.convertAndSend("", "", message, correlationData);
-//        } else {
-//            messageMap.remove(correlationData.getId());
-//            System.out.println("消息唯一标识:" + correlationData + ";确认结果:" + ack);
-//        }
     }
 }

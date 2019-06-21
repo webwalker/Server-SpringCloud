@@ -1,6 +1,7 @@
 package com.xujian.rabbitmq;
 
 import com.rabbitmq.client.Channel;
+import com.xujian.rabbitmq.consumer.BaseConsumer;
 import com.xujian.rabbitmq.pojo.User;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -14,7 +15,7 @@ import static com.xujian.rabbitmq.RabbitMQConfig.sender2QueueName;
 import static com.xujian.rabbitmq.RabbitMQConfig.sender3QueueName;
 
 @Component
-public class Receiver {
+public class Receiver implements BaseConsumer {
     private CountDownLatch latch = new CountDownLatch(1);
 
     //自定义接收
