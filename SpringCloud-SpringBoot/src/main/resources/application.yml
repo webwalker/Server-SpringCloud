@@ -32,3 +32,17 @@ spring:
 #    thymeleaf:
 #        cache: false
 #        prefix: classpath:/templates
+    mail:
+        default-encoding: UTF-8
+        host: smtp.qq.com
+        password: xxx
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true
+        username: xxx@qq.com
+
+filePath: /Users/xujian/Downloads/

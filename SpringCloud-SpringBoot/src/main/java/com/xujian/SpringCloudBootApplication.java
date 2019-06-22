@@ -13,6 +13,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
@@ -21,6 +22,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @MapperScan("com.xujian.mapper") //@MapperScan 用户扫描MyBatis的Mapper接口
 @EnableScheduling //SpringBoot默认的Scheduled定时任务、Quartz都使用
 @EnableConfigurationProperties(StorageProperties.class)
+@EnableAsync
 public class SpringCloudBootApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringCloudBootApplication.class, args);

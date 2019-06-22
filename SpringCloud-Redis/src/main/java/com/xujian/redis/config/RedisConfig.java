@@ -1,5 +1,6 @@
-package com.xujian.redis;
+package com.xujian.redis.config;
 
+import com.xujian.redis.util.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
@@ -106,5 +107,15 @@ public class RedisConfig extends CachingConfigurerSupport {
             }
         };
         return cacheErrorHandler;
+    }
+
+    /**
+     * 注入封装RedisTemplate
+     */
+    @Bean(name = "redisUtil")
+    public RedisUtil redisUtil(RedisTemplate<String, Object> redisTemplate) {
+        RedisUtil redisUtil = new RedisUtil();
+        redisUtil.setRedisTemplate(redisTemplate);
+        return redisUtil;
     }
 }

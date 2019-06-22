@@ -35,8 +35,15 @@
         <module>SpringCloud-Socket</module>
         <module>SpringCloud-Netty-Client</module>
         <module>SpringCloud-Netty-Server</module>
+        <module>SpringCloud-Docker</module>
+        <module>SpringCloud-ElasticSearch</module>
+        <module>SpringCloud-Swagger</module>
+        <module>SpriingCloud-Config</module>
+        <module>SpringCloud-ExceptionHandler</module>
+        <module>SpringCloud-Thymeleaf</module>
     </modules>
 
+    <!--全局通用的版本号定义-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

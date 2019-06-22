@@ -1,5 +1,6 @@
-package com.xujian.rabbitmq;
+package com.xujian.swagger.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -11,14 +12,18 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * 配置swagger
- *
- * @author tanjie
- */
+import java.time.LocalDate;
+import java.util.Date;
+
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
+
+    public static final String SWAGGER_SCAN_BASE_PACKAGE = "com.xujian.swagger";
+    public static final String VERSION = "1.0.0";
+
+    @Value("${swagger.enable}")
+    private boolean enableSwagger;
 
     @Bean
     public Docket createRestApi() {
@@ -26,9 +31,12 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .select()
                 // 扫描该包下的所有需要在Swagger中展示的API，@ApiIgnore注解标注的除外
-                .apis(RequestHandlerSelectors.basePackage("com.xujian.rabbitmq"))
+                .apis(RequestHandlerSelectors.basePackage(SWAGGER_SCAN_BASE_PACKAGE))
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                .enable(enableSwagger)
+                .directModelSubstitute(LocalDate.class, java.sql.Date.class)
+                .directModelSubstitute(Date.class, java.util.Date.class).apiInfo(apiInfo());
 
 //        docket.useDefaultResponseMessages(false);
 //        docket.globalResponseMessage(RequestMethod.GET, newArrayList(
@@ -55,7 +63,9 @@ public class Swagger2Config {
                 // 联系人
                 .contact(new Contact("xujian", "", "xujian.sh@qq.com"))
                 // 版本号
-                .version("1.0")
+                .version(VERSION)
+                .license("Apache 2.0")
+                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
                 .build();
     }
 }

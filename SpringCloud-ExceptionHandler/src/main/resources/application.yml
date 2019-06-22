@@ -1,0 +1,15 @@
+banner:
+    charset: UTF-8
+server:
+    tomcat:
+        uri-encoding: UTF-8
+spring:
+    application:
+        name: springboot-exceptionHandler
+    http:
+        encoding:
+            charset: UTF-8
+            enabled: true
+            force: true
+    messages:
+        encoding: UTF-8

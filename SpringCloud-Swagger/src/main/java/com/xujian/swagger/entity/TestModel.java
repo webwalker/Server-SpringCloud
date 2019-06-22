@@ -1,4 +1,4 @@
-package com.xujian.rabbitmq.sender;
+package com.xujian.swagger.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

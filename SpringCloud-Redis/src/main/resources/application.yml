@@ -14,3 +14,6 @@ spring:
     #默认情况下有16个分片，这里配置具体使用的分片，默认是0
     database: 0
     password:
+#    cluster:
+      # redis最大重连数
+#      max-redirects: 3

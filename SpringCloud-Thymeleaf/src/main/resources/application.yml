@@ -1,0 +1,30 @@
+banner:
+    charset: UTF-8
+logging:
+    file: ./logs/mylog.log
+    level:
+        org:
+            springframework:
+                web: WARN
+        root: INFO
+    pattern:
+        console: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger- %msg%n'
+        file: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger- %msg%n'
+server:
+    tomcat:
+        uri-encoding: UTF-8
+spring:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        password: 12345678
+        url: jdbc:mysql://localhost:3306/xujian?useUnicode=true&characterEncoding=utf8
+        username: root
+    http:
+        encoding:
+            charset: UTF-8
+            enabled: true
+            force: true
+    messages:
+        encoding: UTF-8
+    thymeleaf:
+        cache: false

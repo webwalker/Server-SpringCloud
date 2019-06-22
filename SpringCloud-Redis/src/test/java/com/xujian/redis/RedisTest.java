@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
  * Spring Data Redis测试
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = SpringBootRedisApplication.class)
+@SpringBootTest(classes = RedisApplication.class)
 @Slf4j
 public class RedisTest {
 
