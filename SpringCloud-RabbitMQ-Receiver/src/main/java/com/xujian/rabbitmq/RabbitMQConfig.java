@@ -109,8 +109,8 @@ public class RabbitMQConfig {
 //    @Bean
 //    public ConnectionFactory connectionFactory() {
 //        CachingConnectionFactory factory = new CachingConnectionFactory();
-//        //ExecutorService service = Executors.newFixedThreadPool(20); //500个线程的线程池
-//        //factory.setExecutor(service);
+//        //ExecutorService server = Executors.newFixedThreadPool(20); //500个线程的线程池
+//        //factory.setExecutor(server);
 //        return factory;
 //    }
 
@@ -181,8 +181,8 @@ public class RabbitMQConfig {
 //    @Bean
 //    public SimpleRabbitListenerContainerFactory containerFactory(SimpleRabbitListenerContainerFactoryConfigurer configurer) {
 //        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-//        ExecutorService service = Executors.newFixedThreadPool(600);
-//        factory.setTaskExecutor(service);
+//        ExecutorService server = Executors.newFixedThreadPool(600);
+//        factory.setTaskExecutor(server);
 //        factory.setConcurrentConsumers(500);
 //        factory.setPrefetchCount(5);
 //        configurer.configure(factory, connectionFactory());

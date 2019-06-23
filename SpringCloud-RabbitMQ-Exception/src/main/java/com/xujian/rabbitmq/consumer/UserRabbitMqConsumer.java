@@ -24,13 +24,13 @@ public class UserRabbitMqConsumer {
     @Resource
     private MessageHandler messageHander;
 
-    @Value("${java.rabbitmq.consumer.service.retry.exchange}")
+    @Value("${java.rabbitmq.consumer.server.retry.exchange}")
     private String userServiceListenerRetryExchange;
 
-    @Value("${java.rabbitmq.consumer.service.fail.exchange}")
+    @Value("${java.rabbitmq.consumer.server.fail.exchange}")
     private String userServiceListenerFailExchange;
 
-    @Value("${java.rabbitmq.consumer.service.user.retry.routingkey}")
+    @Value("${java.rabbitmq.consumer.server.user.retry.routingkey}")
     private String userSerivceRetryOrFailRoutingKey;
 
     @RabbitListener(queues = {"material@user"})

@@ -33,14 +33,17 @@
         <module>SpringCloud-Database</module>
         <module>SpringCloud-RocketMQ</module>
         <module>SpringCloud-Socket</module>
-        <module>SpringCloud-Netty-Client</module>
-        <module>SpringCloud-Netty-Server</module>
+        <module>SpringCloud-Netty-Rpc-Client</module>
+        <module>SpringCloud-Netty-Rpc-Server</module>
         <module>SpringCloud-Docker</module>
         <module>SpringCloud-ElasticSearch</module>
         <module>SpringCloud-Swagger</module>
-        <module>SpriingCloud-Config</module>
+        <module>SpringCloud-Config</module>
         <module>SpringCloud-ExceptionHandler</module>
         <module>SpringCloud-Thymeleaf</module>
+        <module>SpringCloud-Netty-HelloWorld</module>
+        <module>SpringCloud-Netty-ProtoBuf</module>
+        <module>SpringCloud-Feign</module>
     </modules>
 
     <!--全局通用的版本号定义-->
@@ -48,6 +51,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <spring-boot-admin.version>2.1.5</spring-boot-admin.version>
+        <netty-all.version>4.1.36.Final</netty-all.version>
+        <grpc.version>1.20.0</grpc.version>
+        <protobuf.version>3.8.0</protobuf.version>
+        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <spring-boot-admin.version>2.1.5</spring-boot-admin.version>
         <thymeleaf/>
     </properties>
@@ -65,12 +73,45 @@
         </dependency>
 
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!--热部署-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <!--test-->
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>2.28.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

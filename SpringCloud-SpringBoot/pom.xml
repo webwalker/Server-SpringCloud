@@ -54,14 +54,6 @@
         </dependency>
         <!--持久层 end-->
 
-        <!-- 热部署: DevTools的坐标 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-            <scope>runtime</scope>
-        </dependency>
-
         <!--定时器 start-->
         <!-- 添加 Scheduled 坐标, Quartz也需要 -->
         <dependency>

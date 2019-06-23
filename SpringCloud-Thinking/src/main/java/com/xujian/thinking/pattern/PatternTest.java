@@ -480,7 +480,7 @@ public class PatternTest {
     // / 为其他对象提供一个代理以控制对这个对象的访问
     // / </summary>
     void Proxy() {
-        // Create proxy and request a service
+        // Create proxy and request a server
         Proxy proxy = new Proxy();
         proxy.Request();
     }

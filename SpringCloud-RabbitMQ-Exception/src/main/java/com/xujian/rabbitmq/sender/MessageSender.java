@@ -21,10 +21,10 @@ public class MessageSender {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @Value("${java.rabbitmq.send.service.exchange}")
+    @Value("${java.rabbitmq.send.server.exchange}")
     private String sendExchange;
 
-    @Value("${java.rabbitmq.send.service.rountkey}")
+    @Value("${java.rabbitmq.send.server.rountkey}")
     private String rountKey;
 
     /**
