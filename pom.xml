@@ -44,6 +44,13 @@
         <module>SpringCloud-Netty-HelloWorld</module>
         <module>SpringCloud-Netty-ProtoBuf</module>
         <module>SpringCloud-Feign</module>
+        <module>service/hello-service-api</module>
+        <module>service/hello-service</module>
+        <module>service/eureka-server</module>
+        <module>feign/feign-consumer</module>
+        <module>hystrix/hystrix-ribbon-consumer</module>
+        <module>config/config-client</module>
+        <module>config/config-server</module>
     </modules>
 
     <!--全局通用的版本号定义-->

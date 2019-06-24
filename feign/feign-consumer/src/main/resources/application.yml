@@ -1,0 +1,31 @@
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+feign:
+  hystrix:
+    enabled: true
+hello-service:
+  ribbon:
+    ## 针对 hello-service 服务，对当前实例重试次数
+    MaxAutoRetries: 0
+    ## 针对 hello-service 服务，重试切换的实例数
+    MaxAutoRetriesNextServer: 1
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread: ## 全局超时熔断时间
+            timeoutInMilliseconds: 10000
+ribbon:
+  ConnectTimeout: 250
+  # 全局重试所有请求（POST 请求等）开关
+  OkToRetryOnAllOperations: false
+  ReadTimeout: 10000
+spring:
+  application:
+    name: feign-consumer
+server:
+  port: 8083

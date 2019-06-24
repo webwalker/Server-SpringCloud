@@ -1,0 +1,21 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 7001
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          # 访问 Git 仓库的密码
+          password: ''
+          # 仓库路径下相对搜索位置，可配置多个
+          search-paths: config
+          # Git 仓库位置
+          uri: https://github.com/webwalker/config.git
+          # 访问 Git 仓库的用户名
+          username: ''

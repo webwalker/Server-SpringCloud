@@ -1,0 +1,4 @@
+
+from: application.yml
+server:
+  port: 8088
