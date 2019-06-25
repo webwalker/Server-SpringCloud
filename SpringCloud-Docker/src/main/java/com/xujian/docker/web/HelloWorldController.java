@@ -1,4 +1,4 @@
-package main.java.com.xujian.docker.web;
+package com.xujian.docker.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

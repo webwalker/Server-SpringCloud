@@ -54,32 +54,6 @@
         </dependency>
         <!--持久层 end-->
 
-        <!--定时器 start-->
-        <!-- 添加 Scheduled 坐标, Quartz也需要 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
-        <!-- Quartz坐标 -->
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
-            <version>LATEST</version>
-            <exclusions>
-                <exclusion>
-                    <!--web启动器已经包含了-->
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- Sprng tx 坐标，Quartz也需要 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-        </dependency>
-        <!--定时器 end-->
-
         <!--websocket-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

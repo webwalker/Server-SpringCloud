@@ -14,13 +14,11 @@ import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @ServletComponentScan //第一种方法, 启动时扫描web servlet的注解并进行实例化
 //@EnableAutoConfiguration
 @MapperScan("com.xujian.mapper") //@MapperScan 用户扫描MyBatis的Mapper接口
-@EnableScheduling //SpringBoot默认的Scheduled定时任务、Quartz都使用
 @EnableConfigurationProperties(StorageProperties.class)
 @EnableAsync
 public class SpringCloudBootApplication {

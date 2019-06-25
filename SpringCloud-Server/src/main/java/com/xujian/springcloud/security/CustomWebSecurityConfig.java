@@ -93,5 +93,17 @@ public class CustomWebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .inMemoryAuthentication()
                 .withUser("admin").password("admin").roles("USER");
+        //LDAP认证
+        //https://github.com/spring-guides/gs-authenticating-ldap/blob/master/complete/src/main/resources/application.properties
+//        auth
+//                .ldapAuthentication()
+//                .userDnPatterns("uid={0},ou=people")
+//                .groupSearchBase("ou=groups")
+//                .contextSource()
+//                .url("ldap://localhost:8389/dc=springframework,dc=org")
+//                .and()
+//                .passwordCompare()
+//                .passwordEncoder(new LdapShaPasswordEncoder())
+//                .passwordAttribute("userPassword");
     }
 }

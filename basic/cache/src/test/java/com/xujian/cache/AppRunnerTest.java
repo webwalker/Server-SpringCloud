@@ -1,0 +1,25 @@
+package com.xujian.cache;
+
+import com.xujian.cache.repository.SimpleBookRepository;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class AppRunnerTest {
+    @Autowired
+    SimpleBookRepository repository;
+
+    @Test
+    public void run() {
+        AppRunner runner = new AppRunner(repository);
+        try {
+            runner.run();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

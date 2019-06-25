@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <!--小写-->
     <artifactId>spring-cloud-docker</artifactId>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,33 +26,34 @@
     <build>
         <defaultGoal>compile</defaultGoal>
         <sourceDirectory>src</sourceDirectory>
-        <finalName>springboot2-docker</finalName>
+        <!--定义输出的文件名称-->
+<!--        <finalName>spring-boot-docker</finalName>-->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                    <mainClass>com.pancm.DockerApplication</mainClass>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
+<!--                <configuration>-->
+<!--                    <fork>true</fork>-->
+<!--                    <mainClass>com.xujian.docker.DockerApplication</mainClass>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>repackage</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
             </plugin>
             <!-- Docker maven plugin -->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>1.2.0</version>
                 <configuration>
                     <!-- docker私服的地址 -->
-                    <dockerHost>http://localhost:2375</dockerHost>
+<!--                    <dockerHost>http://localhost:2375</dockerHost>-->
                     <!--依赖的基础镜像-->
-                    <baseImage>java</baseImage>
+<!--                    <baseImage>java</baseImage>-->
                     <!--镜像名称以及版本号-->
                     <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
                     <!--Dockerfile的位置 -->

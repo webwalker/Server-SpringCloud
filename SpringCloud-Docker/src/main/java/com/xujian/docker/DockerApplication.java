@@ -1,4 +1,4 @@
-package main.java.com.xujian.docker;
+package com.xujian.docker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
