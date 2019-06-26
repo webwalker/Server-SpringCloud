@@ -27,6 +27,8 @@ import javax.sql.DataSource;
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
+
+
     /**
      * 注入权限验证控制器 来支持 password grant type
      */
@@ -56,10 +58,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Bean
     public TokenStore tokenStore() {
-        //redis
-        //return  new RedisTokenStore();
-        //数据库
-        return new JdbcTokenStore(dataSource);
+        return new JdbcTokenStore( dataSource );
     }
 
     @Override
@@ -72,7 +71,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration corsConfiguration = new CorsConfiguration();
                 corsConfiguration.addAllowedHeader("*");
-                corsConfiguration.addAllowedOrigin(request.getHeader(HttpHeaders.ORIGIN));
+                corsConfiguration.addAllowedOrigin(request.getHeader( HttpHeaders.ORIGIN));
                 corsConfiguration.addAllowedMethod("*");
                 corsConfiguration.setAllowCredentials(true);
                 corsConfiguration.setMaxAge(3600L);
@@ -97,9 +96,12 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         endpoints.authenticationManager(authenticationManager);
         //配置token存储方式
         endpoints.tokenStore(tokenStore);
-        //自定义登录或者鉴权失败时的返回信息（WebResponseExceptionTranslateConfig类）
+        //自定义登录或者鉴权失败时的返回信息
         endpoints.exceptionTranslator(webResponseExceptionTranslator);
         //要使用refresh_token的话，需要额外配置userDetailsService
-        endpoints.userDetailsService(userDetailsService);
+        endpoints.userDetailsService( userDetailsService );
+
     }
+
+
 }

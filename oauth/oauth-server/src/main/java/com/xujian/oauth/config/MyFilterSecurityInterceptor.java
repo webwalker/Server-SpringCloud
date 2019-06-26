@@ -1,5 +1,6 @@
 package com.xujian.oauth.config;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.SecurityMetadataSource;
 import org.springframework.security.access.intercept.AbstractSecurityInterceptor;
@@ -15,8 +16,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import java.io.IOException;
 
+
 @Component
 public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor implements Filter {
+
+
     @Autowired
     private FilterInvocationSecurityMetadataSource securityMetadataSource;
 
@@ -24,6 +28,7 @@ public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor imp
     public void setMyAccessDecisionManager(MyAccessDecisionManager myAccessDecisionManager) {
         super.setAccessDecisionManager(myAccessDecisionManager);
     }
+
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -53,4 +58,6 @@ public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor imp
 
         return this.securityMetadataSource;
     }
+
+
 }

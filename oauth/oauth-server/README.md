@@ -1,9 +1,18 @@
+
+	DB管理:
+	https://juejin.im/post/5c997ce5e51d4507853e6a9f#heading-13
+	
+	
+	手机号、邮箱验证：
+	https://segmentfault.com/a/1190000016583573#articleHeader4
+	https://github.com/zhangwei900808/awbeci-ssb
+
 - 主要类
 
 ```
 AuthorizationServerConfiguration
 ResourceServerConfig
-
+SecurityConfig
 ```
 
 - ### 密码授权模式

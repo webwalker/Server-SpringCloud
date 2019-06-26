@@ -1,5 +1,6 @@
 package com.xujian.oauth.service;
 
+
 import com.xujian.oauth.entity.Role;
 import com.xujian.oauth.entity.User;
 import com.xujian.oauth.mapper.RoleMapper;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
+
     @Autowired
     private UserMapper userMapper;
     @Autowired
@@ -22,12 +24,14 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         //查数据库
-        User user = userMapper.loadUserByUsername(userName);
+        User user = userMapper.loadUserByUsername( userName );
         if (null != user) {
-            List<Role> roles = roleMapper.getRolesByUserId(user.getId());
-            user.setAuthorities(roles);
+            List<Role> roles = roleMapper.getRolesByUserId( user.getId() );
+            user.setAuthorities( roles );
         }
 
         return user;
     }
+
+
 }

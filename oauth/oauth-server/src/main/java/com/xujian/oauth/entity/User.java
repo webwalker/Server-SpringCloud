@@ -1,11 +1,12 @@
 package com.xujian.oauth.entity;
 
+
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class User implements UserDetails, Serializable {
+public class User implements UserDetails , Serializable {
 
     private Long id;
     private String username;

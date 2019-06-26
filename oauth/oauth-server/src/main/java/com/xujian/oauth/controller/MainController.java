@@ -1,5 +1,6 @@
 package com.xujian.oauth.controller;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,9 @@ public class MainController {
 
     @RequestMapping("/login-error")
     public String loginError(Model model) {
-        model.addAttribute("loginError", true);
+        model.addAttribute( "loginError"  , true);
         return "login";
     }
+
+
 }

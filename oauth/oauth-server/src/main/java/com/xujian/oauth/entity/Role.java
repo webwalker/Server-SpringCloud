@@ -1,5 +1,6 @@
 package com.xujian.oauth.entity;
 
+
 import org.springframework.security.core.GrantedAuthority;
 
 public class Role implements GrantedAuthority {

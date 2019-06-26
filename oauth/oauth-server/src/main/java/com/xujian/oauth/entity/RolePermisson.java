@@ -1,5 +1,6 @@
 package com.xujian.oauth.entity;
 
+
 public class RolePermisson {
 
     private String url;
@@ -20,5 +21,6 @@ public class RolePermisson {
     public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
+
 
 }

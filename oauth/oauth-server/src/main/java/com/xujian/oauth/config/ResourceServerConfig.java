@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
+
     /**
      * 这里设置需要token验证的url
      * 这些url可以在WebSecurityConfigurerAdapter中排查掉，
@@ -25,4 +26,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/hi").authenticated();
     }
+
+
 }

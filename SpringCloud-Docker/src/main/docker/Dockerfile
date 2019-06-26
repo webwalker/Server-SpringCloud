@@ -1,5 +1,6 @@
 #指定所创建镜像的基础镜像，本地没有就会去官方库下载, 可以指定多个
 FROM openjdk:8-jdk-alpine
+#java:8
 
 #作者信息
 MAINTAINER xujian (xujian.sh@qq.com)

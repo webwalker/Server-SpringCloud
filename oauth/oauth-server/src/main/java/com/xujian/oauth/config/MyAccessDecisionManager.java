@@ -1,5 +1,6 @@
 package com.xujian.oauth.config;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDecisionManager;
@@ -24,8 +25,8 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
     /**
      * 通过传递的参数来决定用户是否有访问对应受保护对象的权限
      *
-     * @param authentication   包含了当前的用户信息，包括拥有的权限。这里的权限来源就是前面登录时UserDetailsService中设置的authorities。
-     * @param object           就是FilterInvocation对象，可以得到request等web资源
+     * @param authentication 包含了当前的用户信息，包括拥有的权限。这里的权限来源就是前面登录时UserDetailsService中设置的authorities。
+     * @param object  就是FilterInvocation对象，可以得到request等web资源
      * @param configAttributes configAttributes是本次访问需要的权限
      */
     @Override
@@ -34,17 +35,18 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
             return;
         } else {
             String needRole;
-            for (Iterator<ConfigAttribute> iter = configAttributes.iterator(); iter.hasNext(); ) {
+            for(Iterator<ConfigAttribute> iter = configAttributes.iterator(); iter.hasNext(); ) {
                 needRole = iter.next().getAttribute();
 
-                for (GrantedAuthority ga : authentication.getAuthorities()) {
-                    if (needRole.trim().equals(ga.getAuthority().trim())) {
+                for(GrantedAuthority ga : authentication.getAuthorities()) {
+                    if(needRole.trim().equals(ga.getAuthority().trim())) {
                         return;
                     }
                 }
             }
             throw new AccessDeniedException("当前访问没有权限");
         }
+
     }
 
     /**

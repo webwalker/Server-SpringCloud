@@ -1,5 +1,6 @@
 package com.xujian.oauth.controller;
 
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,7 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @GetMapping("/hi")
-    public String hi(String name) {
+    public String hi(String name){
         return "hi , " + name;
     }
+
+
 }
