@@ -55,6 +55,7 @@
         <module>ribbon/ribbon-consumer</module>
         <module>zull/api-gateway</module>
         <module>websocket/websocket-start</module>
+        <module>oauth/oauth-server</module>
     </modules>
 
     <!--全局通用的版本号定义-->

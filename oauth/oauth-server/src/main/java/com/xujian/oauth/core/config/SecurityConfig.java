@@ -34,21 +34,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         //校验用户
-        auth.userDetailsService( userService ).passwordEncoder( new PasswordEncoder() {
+        auth.userDetailsService(userService).passwordEncoder(new PasswordEncoder() {
             //对密码进行加密
             @Override
             public String encode(CharSequence charSequence) {
                 System.out.println(charSequence.toString());
                 return DigestUtils.md5DigestAsHex(charSequence.toString().getBytes());
             }
+
             //对密码进行判断匹配
             @Override
             public boolean matches(CharSequence charSequence, String s) {
                 String encode = DigestUtils.md5DigestAsHex(charSequence.toString().getBytes());
-                boolean res = s.equals( encode );
+                boolean res = s.equals(encode);
                 return res;
             }
-        } );
+        });
     }
 
     //这里配置服务自身的权限管理
@@ -58,18 +59,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 csrf()
                 .disable()
                 .formLogin()
-                //登录页面，app用不到
-                //.loginPage("/authentication/login")
-                //登录提交action，app会用到
-                // 用户名登录地址
+                // login action
                 .loginProcessingUrl("/form/token")
+                //貌似用不着, 和默认的输出结果是一样的
                 .successHandler(myAuthenticationSuccessHandler)
                 .failureHandler(myAuthenticationFailureHandler);
     }
 
     @Override
     @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception{
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManager();
     }
 
@@ -84,7 +83,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
             @Override
             public boolean matches(CharSequence charSequence, String s) {
-                return Objects.equals(charSequence.toString(),s);
+                return Objects.equals(charSequence.toString(), s);
             }
         };
     }

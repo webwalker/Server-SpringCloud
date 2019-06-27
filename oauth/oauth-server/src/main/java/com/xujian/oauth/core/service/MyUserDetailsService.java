@@ -30,6 +30,8 @@ public class MyUserDetailsService implements UserDetailsService {
             user.setAuthorities( roles );
         }
 
+        //根据查找到的用户信息判断用户是否被冻结
+
         return user;
     }
 
