@@ -1,4 +1,4 @@
-package com.xujian.oauth.core.config;
+package com.xujian.oauth.core.server;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,8 +10,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
  */
 @Configuration
 @EnableResourceServer
-public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
-
+public class MyResourceServerConfig extends ResourceServerConfigurerAdapter {
     /**
      * 这里设置需要token验证的url
      * 这些url可以在WebSecurityConfigurerAdapter中排查掉，
@@ -21,11 +20,21 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
      */
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers(
+                        "/**/*.js",
+                        "/**/*.css",
+                        "/**/*.jpg",
+                        "/**/*.png",
+                        "/code/image")
+                .permitAll()//以上的请求都不需要认证
+                .anyRequest()
+                .authenticated();
+
         http.requestMatchers().antMatchers("/hi")
                 .and()
                 .authorizeRequests()
                 .antMatchers("/hi").authenticated();
     }
-
-
 }

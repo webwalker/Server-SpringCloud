@@ -1,4 +1,4 @@
-
+统一认证服务
 
 本例实现：
 
@@ -33,5 +33,7 @@ https://github.com/gf-huanchupk/SpringBootLearning/tree/master/springboot-securi
 
 https://segmentfault.com/a/1190000016583573#articleHeader4
 https://github.com/zhangwei900808/awbeci-ssb
-	
+
+完整示例：  
+https://github.com/jeesun/oauthserver	
 

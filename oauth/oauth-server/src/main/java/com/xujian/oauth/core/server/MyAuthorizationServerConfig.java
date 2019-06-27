@@ -1,9 +1,10 @@
-package com.xujian.oauth.core.config;
+package com.xujian.oauth.core.server;
 
 import com.xujian.oauth.core.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -13,7 +14,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -26,14 +27,15 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
-
-
+public class MyAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
     /**
      * 注入权限验证控制器 来支持 password grant type
      */
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private RedisConnectionFactory redisConnectionFactory;
 
     /**
      * 注入userDetailsService，开启refresh_token需要用到
@@ -48,7 +50,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     private DataSource dataSource;
 
     /**
-     * 设置保存token的方式，一共有五种，这里采用数据库的方式
+     * 设置保存token的方式，一共有五种
      */
     @Autowired
     private TokenStore tokenStore;
@@ -58,7 +60,9 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Bean
     public TokenStore tokenStore() {
-        return new JdbcTokenStore( dataSource );
+        //通过redis存储token
+        return new RedisTokenStore(redisConnectionFactory);
+        //return new JdbcTokenStore( dataSource );
     }
 
     @Override
@@ -87,7 +91,20 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.jdbc(dataSource);
+        clients.jdbc(dataSource); //通过数据库读取客户端认证配置
+
+        /*clients.inMemory()//配置内存中，也可以是数据库
+                .withClient("dev")//clientid
+                .secret("dev")
+                .accessTokenValiditySeconds(3600)//token有效时间  秒
+                .authorizedGrantTypes("refresh_token", "password", "authorization_code")//token模式
+                .scopes("all")//限制允许的权限配置
+
+                .and()//下面配置第二个应用   （不知道动态的是怎么配置的，那就不能使用内存模式，应该使用数据库模式来吧）
+                .withClient("test")
+                .scopes("testSc")
+                .accessTokenValiditySeconds(7200)
+                .scopes("all");*/
     }
 
     @Override
@@ -100,8 +117,5 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         endpoints.exceptionTranslator(webResponseExceptionTranslator);
         //要使用refresh_token的话，需要额外配置userDetailsService
         endpoints.userDetailsService( userDetailsService );
-
     }
-
-
 }

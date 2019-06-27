@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.util.DigestUtils;
 
 import java.util.Objects;
@@ -22,6 +24,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyUserDetailsService userService;
 
+    @Autowired
+    protected AuthenticationSuccessHandler myAuthenticationSuccessHandler;
+
+    @Autowired
+    protected AuthenticationFailureHandler myAuthenticationFailureHandler;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -42,21 +49,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 return res;
             }
         } );
-
     }
 
+    //这里配置服务自身的权限管理
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-        http.requestMatchers()
-                .antMatchers("/oauth/**","/login","/login-error")
-                .and()
-                .authorizeRequests()
-                .antMatchers("/oauth/**").authenticated()
-                .and()
-                .formLogin().loginPage( "/login" ).failureUrl( "/login-error" );
+        http.
+                csrf()
+                .disable()
+                .formLogin()
+                //登录页面，app用不到
+                //.loginPage("/authentication/login")
+                //登录提交action，app会用到
+                // 用户名登录地址
+                .loginProcessingUrl("/form/token")
+                .successHandler(myAuthenticationSuccessHandler)
+                .failureHandler(myAuthenticationFailureHandler);
     }
-
 
     @Override
     @Bean
@@ -66,6 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
         return new PasswordEncoder() {
             @Override
             public String encode(CharSequence charSequence) {
@@ -78,6 +88,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             }
         };
     }
-
-
 }
