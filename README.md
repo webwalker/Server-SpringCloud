@@ -12,4 +12,7 @@
 - 经典实例
   
   - https://github.com/paascloud/paascloud-master
+  - https://gitee.com/dataact/jeeweb-vue-admin
+  - https://gitee.com/dataact/jeeweb/
   
+

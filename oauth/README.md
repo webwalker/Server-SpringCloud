@@ -1,4 +1,13 @@
-统一认证服务
+体验下来之后，发现其实并没有那么好用，如果真有需要，可以自己去实现这套机制，更灵活和可控：
+
+- token生成、验证、过期管理
+
+- 数据库用户、角色、权限
+
+- 注解权限拦截
+
+  
+
 
 本例实现：
 
@@ -29,12 +38,12 @@ DB方式管理：
 https://juejin.im/post/5c997ce5e51d4507853e6a9f#heading-13 
 https://github.com/gf-huanchupk/SpringBootLearning/tree/master/springboot-security-oauth2
 
+使用Spring Security和OAuth2保护REST接口（Good）：
+https://mp.weixin.qq.com/s/l7ZLcSKQykJdpNVq_JpB-g
+
 Redis管理：
 https://segmentfault.com/a/1190000016583573#articleHeader4
 https://github.com/zhangwei900808/awbeci-ssb
-
-完整示例：  
-https://github.com/jeesun/oauthserver	
 
 
 

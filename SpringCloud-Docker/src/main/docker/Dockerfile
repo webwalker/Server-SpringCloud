@@ -9,7 +9,7 @@ MAINTAINER xujian (xujian.sh@qq.com)
 VOLUME /tmp
 
 #复制指定的文件到容器中且重命名
-ADD spring-cloud-docker-0.0.1-SNAPSHOT.jar app.jar
+ADD spring-cloud-docker-*.jar app.jar
 #COPY
 
 #要执行的命令, 所有的SSH都可以, 可用 \ 换行 和 && 连接符
