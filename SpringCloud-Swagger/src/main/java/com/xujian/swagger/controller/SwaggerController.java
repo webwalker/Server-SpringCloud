@@ -16,9 +16,9 @@ public class SwaggerController {
     @PostMapping("/direct")
     public void direct(String sendMessage, boolean async) {
         if (async) {
-            System.out.println();
+            System.out.println("async");
         } else {
-            System.out.println();
+            System.out.println("sync");
         }
     }
 }

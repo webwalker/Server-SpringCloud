@@ -1,2 +1,9 @@
 swagger:
-  enable: true
+  production: false
+  basic:
+    enable: true
+    username: xujian
+    password: 123
+
+server:
+  port: 8082

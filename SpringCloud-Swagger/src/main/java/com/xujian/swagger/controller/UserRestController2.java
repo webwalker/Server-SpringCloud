@@ -8,10 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags = {"UserRestController 1.0.1"})
+@Api(tags = {"UserRestController 1.0.2"})
 @RestController
-@RequestMapping(value = "/api101")
-public class UserRestController {
+@RequestMapping(value = "/api102")
+public class UserRestController2 {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ApiOperation(value = "创建用户", notes = "根据User对象创建用户")
