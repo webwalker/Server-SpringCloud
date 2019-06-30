@@ -34,17 +34,17 @@ public class IndicatorService {
 
     @KafkaListener(topics = "#{kafkaTopicName}", groupId = "#{topicGroupId}")
     public void processMessage(ConsumerRecord<Integer, String> record) {
-        LOG.info("kafka processMessage start");
-        LOG.info("processMessage, topic = {}, msg = {}", record.topic(), record.value());
+        LOG.info("----------->kafka processMessage start");
+        LOG.info("----------->processMessage, topic = {}, msg = {}", record.topic(), record.value());
 
         // do something ...
         //properties.getProperties();
 
-        LOG.info("kafka processMessage end");
+        LOG.info("----------->kafka processMessage end");
     }
 
     public void sendMessage(String topic, String data) {
-        LOG.info("kafka sendMessage start");
+        LOG.info("----------->kafka sendMessage start");
         ListenableFuture<SendResult<Integer, String>> future = kafkaTemplate.send(topic, data);
         future.addCallback(new ListenableFutureCallback<SendResult<Integer, String>>() {
             @Override
@@ -57,6 +57,6 @@ public class IndicatorService {
                 LOG.info("kafka sendMessage success topic = {}, data = {}", topic, data);
             }
         });
-        LOG.info("kafka sendMessage end");
+        LOG.info("----------->kafka sendMessage end");
     }
 }
