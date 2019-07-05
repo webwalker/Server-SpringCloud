@@ -1,0 +1,24 @@
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: TopicGroup1
+    send-message-timeout: 300000
+    compress-message-body-threshold: 4096
+    max-message-size: 4194304
+    retry-times-when-send-async-failed: 0
+    retry-next-server: true
+    retry-times-when-send-failed: 2
+    #消息轨迹
+    enable-msg-trace: true
+    customized-trace-topic: my_trace_topic
+    #ACL权限控制
+#    access-key:
+#    secret-key:
+
+demo:
+  rocketmq:
+    topic: string-topic
+    orderTopic: order-paid-topic
+    msgExtTopic: message-ext-topic
+    transTopic: spring-transaction-topic
+    extNameServer: 192.168.3.29:9876

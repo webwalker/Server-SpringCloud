@@ -1,0 +1,17 @@
+server:
+  port: 8089
+rocketmq:
+  name-server: localhost:9876 #多个用;分开
+#  consumer:
+#    access-key:
+#    secret-key:
+#    customized-trace-topic:
+#  access-channel:
+
+demo:
+  rocketmq:
+    topic: string-topic #可以用*模糊匹配
+    orderTopic: order-paid-topic
+    msgExtTopic: message-ext-topic
+    transTopic: spring-transaction-topic
+    extNameServer: 192.168.3.29:9876

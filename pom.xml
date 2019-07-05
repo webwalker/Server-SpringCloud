@@ -56,6 +56,7 @@
         <module>zull/api-gateway</module>
         <module>websocket/websocket-start</module>
         <module>oauth/oauth-server</module>
+        <module>kafka/kafka-demo</module>
     </modules>
 
     <!--全局通用的版本号定义-->

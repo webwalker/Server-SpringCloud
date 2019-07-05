@@ -1,0 +1,10 @@
+logging:
+  path: /Users/xujian/logs
+server:
+  port: 8088
+  tomcat:
+    compression: 'on'
+    uri-encoding: UTF-8
+spring:
+  application:
+    name: zookeeperdemo

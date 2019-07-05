@@ -6,11 +6,12 @@ spring:
     url: jdbc:mysql://localhost:3306/xujian?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     druid:
-      initialSize: 5 #5
+      #单MySQL链接 3000
+      initialSize: 20 #5
       #最小连接池数量, sleep保留
       minIdle: 5
       #最大连接池数量= ((核心数 * 2) + 有效磁盘数)
-      maxActive: 20 #10
+      maxActive: 100 #150
       #官方不建议配置
       #      maxWait: 60000
       #连接的间隔时间，如果连接空闲时间大于等于minEvictableIdleTimeMillis则关闭物理连接
