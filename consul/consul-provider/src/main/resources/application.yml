@@ -1,0 +1,13 @@
+server:
+  port: 8501
+spring:
+  application:
+    name: spring-cloud-consul-producer
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      #注册到consul的服务名称
+      discovery:
+        serviceName: service-provider
+        healthCheckInterval: 15s

@@ -53,7 +53,7 @@
         <module>feign/feign-consumer</module>
         <module>hystrix/hystrix-ribbon-consumer</module>
         <module>ribbon/ribbon-consumer</module>
-        <module>zull/api-gateway</module>
+        <module>gateway/zuul</module>
         <module>websocket/websocket-start</module>
         <module>oauth/oauth-server</module>
         <module>kafka/kafka-demo</module>

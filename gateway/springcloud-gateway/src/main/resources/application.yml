@@ -1,0 +1,69 @@
+server:
+  port: 9999
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: service_to_web #路由名称
+          uri: lb://authdemo
+          predicates:
+            - Path=/demo/** #匹配到的都转发到authdemo实例
+        #限速路由器
+        - id: header
+          uri: http://localhost:8888/header
+          filters:
+            #- StripPrefix=1
+            - AddRequestHeader=header, addHeader
+            - AddRequestParameter=param, addParam
+            #限流配置
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 10 #允许用户每秒处理多少个请求
+#                redis-rate-limiter.burstCapacity: 20 #令牌桶的容量，允许在一秒钟内完成的最大请求数
+#                key-resolver: "#{@ipKeyResolver}" #使用SpEL按名称引用bean
+          predicates:
+            - Path=/jd
+#            - Method=GET
+        #熔断路由器
+        - id: hystrix_route
+          uri: lb://spring-cloud-producer
+          predicates:
+            - Path=/consumingserviceendpoint
+          filters:
+            #- Hystrix=myCommandName
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/incaseoffailureusethis
+        #重试路由器
+        - id: retry_test
+          uri: lb://spring-cloud-producer
+          predicates:
+            - Path=/retry
+          filters:
+            - name: Retry
+              args:
+                retries: 3
+                statuses: BAD_GATEWAY
+  redis:
+    host: localhost
+    password:12345678
+    port: 6379
+# 通过gateway自带的端点管理路由
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+# 打印网关日志信息
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

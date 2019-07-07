@@ -1,0 +1,113 @@
+server:
+  port: 5555
+
+spring:
+  application:
+    name: zuul-gateway
+  cloud:
+    # 设置偏好网段
+    inetutils:
+      preferred-networks: 127.0.0.
+    loadbalancer:
+      retry:
+        enabled: true
+  jackson:
+    date-format: yyyy-MM-dd
+    joda-date-time-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 1000ms
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+  zipkin:
+    enabled: true
+    base-url: http://zipkin-dashboard/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+ribbon:
+  ConnectTimeout: 250
+  MaxAutoRetries: 2
+  MaxAutoRetriesNextServer: 0
+  ReadTimeout: 1000
+
+zuul:
+  #保持为空，避免转发的头信息丢失，被过滤掉
+  #这里设置的敏感信息会被过滤
+  sensitive-headers:
+  #避免路由返回时地址变化
+  add-host-header: true
+  SendErrorFilter:
+    post:
+      disable: true
+#      error: true
+  #限流
+  ratelimit:
+    # 开启限流
+    enabled: true
+    # 存储方式
+    repository: REDIS
+    # 限流策略
+    default-policy:
+      limit: 1
+      quota: 1
+      refresh-interval: 3
+    policies:
+      # 指定限流服务
+      user-service:
+        # 每个周期内请求次数
+        limit: 3
+        # 单位时间内允许访问的总时间
+        quota: 30
+        # 周期时间
+        refresh-interval: 60
+        # 限流方式 USER 根据用户；ORIGIN 原始请求；URL 请求地址；
+        type: ORIGIN
+  retryable: true
+#  host:
+#    maxTotalConnections: 200
+#    maxPerRouteConnections: 20
+#  ribbon:
+#    eager-load:
+#      enabled: true     #zuul饥饿加载
+  routes:
+#    producer:
+#      #响应的路径
+#      path: /producer/**
+#      #重定向到的服务（根据服务id名称从注册中心获取服务地址）
+#      serviceId:  producer-service
+    #路由名称, 随便定义
+    hello-service:
+      retryable: false
+      ## 面向服务的路由
+      service-id: hello-service
+      #请求该路径会经eureka server调用hello-service
+      path: /hello-service/**
+#      ignoredPatterns: /consul
+        #(去请求目标服务的时候)是否丢掉前缀,根据需求来配置
+      #代表截取路径的个数，/name/** --> 这样配置后当请求/name/bar/foo
+#      stripPrefix: true
+      #在 URL 路径前面添加一部分的前缀
+      #PrefixPath: /test
+    feign-consumer:
+      path: /feign-consumer/**
+      service-id: feign-consumer
+      ## 传统路由单实例配置, 通过url不灵活
+#      path: /hello-service/**
+#      url: http://localhost:8081/
