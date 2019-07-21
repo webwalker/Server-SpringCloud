@@ -7,3 +7,10 @@ spring:
     name: ribbon-consumer
 server:
   port: 8085
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000

@@ -40,12 +40,11 @@ https://github.com/gf-huanchupk/SpringBootLearning/tree/master/springboot-securi
 
 使用Spring Security和OAuth2保护REST接口（Good）：
 https://mp.weixin.qq.com/s/l7ZLcSKQykJdpNVq_JpB-g
+https://mp.weixin.qq.com/s/0PAUErDh0qmcR4SUsTn15Q
 
 Redis管理：
 https://segmentfault.com/a/1190000016583573#articleHeader4
 https://github.com/zhangwei900808/awbeci-ssb
-
-
 
 ### 密码授权模式 
 

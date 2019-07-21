@@ -9,3 +9,11 @@ admin
 https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
 - 文档  
 https://github.com/alibaba/druid/wiki/
+
+事务：
+
+saga
+
+xa
+
+seata

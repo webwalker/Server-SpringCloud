@@ -2,13 +2,27 @@ server:
   port: 8761
 
 app:
-  id: springboot-apollo
+  id: SampleApp
+
 apollo:
   meta: http://127.0.0.1:8080
   bootstrap:
-    enabled: true
+    enabled: true #注入默认application namespace
     eagerLoad:
-      enabled: true
+      enabled: true #使Apollo的加载顺序放到日志系统加载之前
+    # will inject 'application' and 'TEST1.apollo' namespaces in bootstrap phase
+    #注入非默认application namespace或多个namespace
+    namespaces: application,TEST1.apollo,application.yml
+  #关闭自动更新
+  #autoUpdateInjectedSpringProperties: false
+
+redis:
+  cache:
+    enabled: true
+
+remote:
+  config:
+    port: 1000
 
 logging:
   level:

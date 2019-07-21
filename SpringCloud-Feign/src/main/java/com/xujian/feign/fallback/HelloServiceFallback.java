@@ -2,11 +2,13 @@ package com.xujian.feign.fallback;
 
 import com.xujian.feign.client.HelloClientService;
 import com.xujian.feign.entity.User;
+import org.springframework.stereotype.Service;
 
 /**
  * 服务降级
  * Created by xujian on 2019-06-23
  */
+@Service
 public class HelloServiceFallback implements HelloClientService {
     @Override
     public String hello(String p1, String p2) {

@@ -1,10 +1,9 @@
 package com.xujian.netty;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
+//@SpringBootApplication
 @ComponentScan({"com.xujian.netty.client"})
 public class NettyClientApp {
     /**

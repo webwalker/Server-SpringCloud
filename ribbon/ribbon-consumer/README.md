@@ -14,7 +14,7 @@ Ribbon 在单独使用时，可以通过在客户端中配置 ribbonServerList �
 
 多次访问 http://localhost:8080/hello ，可以观察到 ribbon-consumer 通过负载均衡的 restTemplate 轮训地向两个 hello-service 发起请求。  
 
-http://localhost:8080/user?id=1&name=xujian  
+http://localhost:8085/user?id=1&name=xujian
 
-http://localhost:8080/post-user 
+http://localhost:8085/post-user 
 
