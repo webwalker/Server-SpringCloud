@@ -1,6 +1,7 @@
 package com.xujian.hystrix.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.xujian.hystrix.exception.NotFallbackException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -21,7 +22,7 @@ public class HelloService {
 
     private static String HELLO_SERVICE = "http://hello-service/";
 
-    @HystrixCommand(fallbackMethod = "helloFallback", //处理降级逻辑的方法
+    @HystrixCommand(fallbackMethod = "helloError", //处理降级逻辑的方法
             ignoreExceptions = {NotFallbackException.class}, //指定不执行降级逻辑的异常
             groupKey = "hello", //作为命令统计的分组
             commandKey = "str", //作为命令统计的命令名称
@@ -42,7 +43,32 @@ public class HelloService {
         return restTemplate.getForObject(uri, String.class);
     }
 
-    private String helloFallback(String p1, String p2, Throwable e) {
+    @HystrixCommand(fallbackMethod = "helloError",
+            commandProperties = {
+                    @HystrixProperty(name = "execution.isolation.strategy", value = "THREAD"),
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000"),
+                    @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),
+                    @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2")},
+            threadPoolProperties = { //参见HystrixThreadPoolProperties类定义
+                    @HystrixProperty(name = "coreSize", value = "5"),
+//                    @HystrixProperty(name = "maximumSize", value = "5"),
+                    @HystrixProperty(name = "maxQueueSize", value = "10")
+            })
+    public String sayHello(String name) {
+        try {
+            Thread.sleep(15000);
+            return "Hello " + name + " !";
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String helloError(String name) {
+        return "服务器繁忙，请稍后访问~";
+    }
+
+    private String helloError(String p1, String p2, Throwable e) {
         System.out.println("helloFallback class: " + e.getClass());
         return "Hystrix makes error, " + p1 + ", " + p2;
     }

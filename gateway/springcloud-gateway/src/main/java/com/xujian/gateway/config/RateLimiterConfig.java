@@ -26,7 +26,8 @@ public class RateLimiterConfig {
     //用户限流, 请求路径中必须携带userId参数
     @Bean
     public KeyResolver userKeyResolver() {
-        return exchange -> Mono.just(exchange.getRequest().getQueryParams().getFirst("userId"));
+        return exchange -> Mono.just(exchange.getRequest().getHeaders().getFirst("userId"));
+        //return exchange -> Mono.just(exchange.getRequest().getQueryParams().getFirst("userId"));
     }
 
     //接口限流

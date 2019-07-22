@@ -12,6 +12,7 @@ spring:
           uri: lb://authdemo
           predicates:
             - Path=/demo/** #匹配到的都转发到authdemo实例
+#            - After=2019-02-26T00:00:00+08:00[Asia/Shanghai]
         #限速路由器
         - id: header
           uri: http://localhost:8888/header

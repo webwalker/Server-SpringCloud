@@ -22,4 +22,9 @@ public class ConsumerController {
         System.out.println("hello1");
         return helloService.hello(p1, p2);
     }
+
+    @GetMapping("/hi")
+    public String hi(String name) {
+        return helloService.sayHello( name );
+    }
 }

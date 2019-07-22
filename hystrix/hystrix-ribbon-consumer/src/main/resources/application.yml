@@ -3,6 +3,11 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 hystrix:
+  threadpool:
+    default:
+      #默认Hystrix是Thread模式，使用线程池接收请求，如果性能测试时并发数目过高，
+      #可能出现部分请求直接走熔断器的情况，日志又看不出什么异常，并发数目低就可以
+      coreSize: 500
   command:
     default:
       execution:
