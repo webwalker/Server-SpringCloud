@@ -90,7 +90,7 @@ public class ProductorConsumer implements ITester {
                 }
             }
             number++;
-            System.out.println(number);
+            System.out.println("increace: " + number);
             notify();
         }
 
@@ -106,7 +106,7 @@ public class ProductorConsumer implements ITester {
                 }
             }
             number--;
-            System.out.println(number);
+            System.out.println("decreace: " + number);
             notify();
         }
     }

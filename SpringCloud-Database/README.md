@@ -10,6 +10,8 @@ https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
 - 文档  
 https://github.com/alibaba/druid/wiki/
 
+分页插件使用：https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/zh/HowToUse.md
+
 事务：
 
 saga

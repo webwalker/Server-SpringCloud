@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.InputStream;
 import java.util.List;
 
 @Service
@@ -43,5 +44,10 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public void deleteUserById(Integer id) {
         this.userMapper.deleteUserById(id);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void parseBookmarkFile(int userId, InputStream stream, String path) throws Exception {
+
     }
 }
