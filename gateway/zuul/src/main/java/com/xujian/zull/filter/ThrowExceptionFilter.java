@@ -35,7 +35,7 @@ public class ThrowExceptionFilter extends ZuulFilter {
      */
     @Override
     public Object run() {
-        log.info("This is a pre filter, it will throw a RuntimeException");
+        log.info("This is a pre monitor, it will throw a RuntimeException");
 
         doSomething();
 

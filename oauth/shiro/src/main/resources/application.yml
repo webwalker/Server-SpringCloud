@@ -1,7 +1,6 @@
 server:
   servlet:
     context-path: /web
-
 spring:
   datasource:
     druid:
@@ -34,7 +33,7 @@ spring:
       # Spring监控AOP切入点，如x.y.z.service.*,配置多个英文逗号分隔
       aop-patterns: com.springboot.servie.*
 
-
+      #------------配置监控-------------
       # WebStatFilter配置
       web-stat-filter:
         enabled: true
@@ -51,8 +50,8 @@ spring:
         # 是否能够重置数据
         reset-enable: false
         # 需要账号密码才能访问控制台
-        login-username: druid
-        login-password: druid123
+        login-username: admin
+        login-password: admin
         # IP白名单
         # allow: 127.0.0.1
         # IP黑名单（共同存在时，deny优先于allow）
@@ -65,7 +64,16 @@ spring:
 
   thymeleaf:
     cache: false
-
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 0
+    lettuce:
+      pool:
+        max-idle: 8
+        max-wait: -1
+        min-idle: 0
+        max-active: 8
 mybatis:
   # type-aliases扫描路径
   type-aliases-package: com.springboot.pojo

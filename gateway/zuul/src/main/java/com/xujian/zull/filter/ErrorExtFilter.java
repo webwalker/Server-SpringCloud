@@ -23,7 +23,7 @@ public class ErrorExtFilter extends SendErrorFilter {
     public boolean shouldFilter() {
         // 判断：仅处理来自post过滤器引起的异常
 //        RequestContext ctx = RequestContext.getCurrentContext();
-//        ZuulFilter failedFilter = (ZuulFilter) ctx.get("failed.filter");
+//        ZuulFilter failedFilter = (ZuulFilter) ctx.get("failed.monitor");
 //        if (failedFilter != null && failedFilter.filterType().equals("post")) {
 //            return true;
 //        }

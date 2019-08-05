@@ -12,7 +12,7 @@
 
     <select id="findByUserName" resultMap="User">
         select *
-        from shiro_user
+        from t_user
         where username = #{userName}
     </select>
 

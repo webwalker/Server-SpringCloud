@@ -1,4 +1,4 @@
-package com.xujian.database.servlet;
+package com.xujian.database.monitor;
 
 import com.alibaba.druid.support.http.StatViewServlet;
 

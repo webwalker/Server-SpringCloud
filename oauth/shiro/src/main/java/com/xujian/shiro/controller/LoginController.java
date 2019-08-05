@@ -46,6 +46,11 @@ public class LoginController {
         return "redirect:/index";
     }
 
+    @GetMapping("/403")
+    public String forbid() {
+        return "403";
+    }
+
     @RequestMapping("/index")
     public String index(Model model) {
         User user = (User) SecurityUtils.getSubject().getPrincipal();

@@ -1,4 +1,4 @@
-package com.xujian.database.filter;
+package com.xujian.shiro.monitor;
 
 import com.alibaba.druid.support.http.WebStatFilter;
 
