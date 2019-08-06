@@ -1,0 +1,8 @@
+security:
+  oauth2:
+    client:
+      #替换spring的
+      client-id: test
+      client-secret: test1234
+      #redirect_uri必须同时在配置文件中指定，不可传参
+      registered-redirect-uri: http://baidu.com
