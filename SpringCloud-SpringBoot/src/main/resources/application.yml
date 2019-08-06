@@ -36,7 +36,7 @@ spring:
             max-request-size: 200MB
 #    thymeleaf:
 #        cache: false
-#        prefix: classpath:/templates
+#        prefix: classpath:/static
     mail:
         default-encoding: UTF-8
         host: smtp.qq.com

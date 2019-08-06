@@ -26,7 +26,7 @@ public class FileUploadController {
 
     @GetMapping("/upload")
     public String uploading() {
-        //跳转到 templates 目录下的 uploading.html
+        //跳转到 static 目录下的 uploading.html
         return "uploading";
     }
 
