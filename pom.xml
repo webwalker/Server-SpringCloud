@@ -20,29 +20,27 @@
         <module>SpringCloud-Server</module>
         <module>SpringCloud-Client</module>
         <module>SpringCloud-SpringBoot</module>
-        <module>SpringCloud-Eureka-Server</module>
-        <module>SpringCloud-Eureka-Ha</module>
-        <module>SpringCloud-Eureka-Provider</module>
-        <module>SpringCloud-Eureka-Consumer</module>
-        <module>SpringCloud-RabbitMQ-Receiver</module>
+        <module>eureka/SpringCloud-Eureka-Server</module>
+        <module>eureka/SpringCloud-Eureka-Ha</module>
+        <module>eureka/SpringCloud-Eureka-Provider</module>
+        <module>eureka/SpringCloud-Eureka-Consumer</module>
+        <module>mq/SpringCloud-RabbitMQ-Receiver</module>
         <module>SpringCloud-Redis</module>
-        <module>SpringCloud-RabbitMQ-Sender</module>
+        <module>mq/SpringCloud-RabbitMQ-Sender</module>
         <module>SpringCloud-Utility</module>
-        <module>SpringCloud-RabbitMQ-Exception</module>
+        <module>mq/SpringCloud-RabbitMQ-Exception</module>
         <module>SpringCloud-Thinking</module>
-        <module>SpringCloud-Database</module>
-        <module>SpringCloud-RocketMQ</module>
-        <module>SpringCloud-Socket</module>
-        <module>SpringCloud-Netty-Rpc-Client</module>
-        <module>SpringCloud-Netty-Rpc-Server</module>
+        <module>database/SpringCloud-Database</module>
+        <module>mq/SpringCloud-RocketMQ</module>
+        <module>netty/SpringCloud-Netty-Rpc-Client</module>
+        <module>netty/SpringCloud-Netty-Rpc-Server</module>
         <module>SpringCloud-Docker</module>
-        <module>SpringCloud-ElasticSearch</module>
         <module>SpringCloud-Swagger</module>
         <module>SpringCloud-Config</module>
         <module>SpringCloud-ExceptionHandler</module>
         <module>SpringCloud-Thymeleaf</module>
-        <module>SpringCloud-Netty-HelloWorld</module>
-        <module>SpringCloud-Netty-ProtoBuf</module>
+        <module>netty/SpringCloud-Netty-HelloWorld</module>
+        <module>netty/SpringCloud-Netty-ProtoBuf</module>
         <module>SpringCloud-Feign</module>
         <module>config/config-client</module>
         <module>config/config-server</module>
@@ -57,7 +55,7 @@
         <module>websocket/websocket-start</module>
         <module>oauth/oauth-server</module>
         <module>kafka/kafka-demo</module>
-        <module>SpringCloud-Database-MongoDB</module>
+        <module>database/SpringCloud-Database-MongoDB</module>
     </modules>
 
     <!--全局通用的版本号定义-->
