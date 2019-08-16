@@ -57,6 +57,7 @@
         <module>websocket/websocket-start</module>
         <module>oauth/oauth-server</module>
         <module>kafka/kafka-demo</module>
+        <module>SpringCloud-Database-MongoDB</module>
     </modules>
 
     <!--全局通用的版本号定义-->
@@ -107,6 +108,13 @@
         </dependency>
     </dependencies>
 
+    <!--只是声明依赖，并不实现引入，如果不在子项目中声明依赖，是不会从父项目中继承下来的；只有在子项目中写了该依赖项，
+    并且没有指定具体版本，才会从父项目中继承该项，
+    并且version和scope都读取自父pom;另外如果子项目中指定了版本号，那么会使用子项目中指定的jar版本。
+
+    让子项目中引用一个依赖而不用显示的列出版本号。Maven会沿着父子层次向上走，
+    直到找到一个拥有dependencyManagement元素的项目，
+    然后它就会使用在这个dependencyManagement元素中指定的版本号-->
     <dependencyManagement>
         <dependencies>
             <dependency>

@@ -8,9 +8,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 只是封装了一部分, 更多的在redisTemplate不同集合类中
+ */
 public class RedisUtil {
     private RedisTemplate<String, Object> redisTemplate;
 
+    ////由于当前class不在spring boot框架内（不在web项目中）所以无法使用autowired，使用此种方法进行注入
     public void setRedisTemplate(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
@@ -170,52 +174,9 @@ public class RedisUtil {
         return redisTemplate.opsForHash().get(key, item);
     }
 
-    /**
-     * 获取hashKey对应的所有键值
-     *
-     * @param key 键
-     * @return 对应的多个键值
-     */
-    public Map<Object, Object> hmget(String key) {
-        return redisTemplate.opsForHash().entries(key);
-    }
-
-    /**
-     * HashSet
-     *
-     * @param key 键
-     * @param map 对应多个键值
-     * @return true 成功 false 失败
-     */
-    public boolean hmset(String key, Map<String, Object> map) {
-        try {
-            redisTemplate.opsForHash().putAll(key, map);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    /**
-     * HashSet 并设置时间
-     *
-     * @param key  键
-     * @param map  对应多个键值
-     * @param time 时间(秒)
-     * @return true成功 false失败
-     */
-    public boolean hmset(String key, Map<String, Object> map, long time) {
-        try {
-            redisTemplate.opsForHash().putAll(key, map);
-            if (time > 0) {
-                expire(key, time);
-            }
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    //获取列表数据
+    public List<Object> hgetList(String key) {
+        return redisTemplate.opsForHash().values(key);
     }
 
     /**
@@ -259,6 +220,73 @@ public class RedisUtil {
     }
 
     /**
+     * 获取hashKey对应的所有键值
+     *
+     * @param key 键
+     * @return 对应的多个键值
+     */
+    public Map<Object, Object> hmget(String key) {
+        return redisTemplate.opsForHash().entries(key);
+    }
+
+    //获取变量中的键
+    public Set<Object> hsget(String key) {
+        return redisTemplate.opsForHash().keys(key);
+    }
+
+    //以集合的方式获取变量中的值
+
+    /**
+     * List<Object> list = new ArrayList<Object>();
+     * list.add("map1");
+     * list.add("map2");
+     * @param key
+     * @param list
+     * @return
+     */
+    public List hGetList(String key, List<Object> list) {
+        return redisTemplate.opsForHash().multiGet(key, list);
+    }
+
+    /**
+     * HashSet
+     *
+     * @param key 键
+     * @param map 对应多个键值
+     * @return true 成功 false 失败
+     */
+    public boolean hmset(String key, Map<String, Object> map) {
+        try {
+            redisTemplate.opsForHash().putAll(key, map);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * HashSet 并设置时间
+     *
+     * @param key  键
+     * @param map  对应多个键值
+     * @param time 时间(秒)
+     * @return true成功 false失败
+     */
+    public boolean hmset(String key, Map<String, Object> map, long time) {
+        try {
+            redisTemplate.opsForHash().putAll(key, map);
+            if (time > 0) {
+                expire(key, time);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
      * 删除hash表中的值
      *
      * @param key  键 不能为null
@@ -277,6 +305,11 @@ public class RedisUtil {
      */
     public boolean hHasKey(String key, String item) {
         return redisTemplate.opsForHash().hasKey(key, item);
+    }
+
+    //大小
+    public long hSize(String key) {
+        return redisTemplate.opsForHash().size(key);
     }
 
     /**
@@ -394,7 +427,7 @@ public class RedisUtil {
      * @param values 值 可以是多个
      * @return 移除的个数
      */
-    public long setRemove(String key, Object... values) {
+    public long sRemove(String key, Object... values) {
         try {
             Long count = redisTemplate.opsForSet().remove(key, values);
             return count;

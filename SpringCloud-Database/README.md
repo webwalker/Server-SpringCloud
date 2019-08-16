@@ -3,7 +3,8 @@
 ####Druid
 - 监控  
 http://localhost:8888/druid/  
-admin  
+- http://localhost:8080/web/druid/
+- admin  
 admin
 - 配置    
 https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
